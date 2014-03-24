@@ -1,0 +1,8 @@
+.Rproj.user
+.Rhistory
+.RData
+output
+local
+**/Debug/**
+*.local.*
+*.suo
