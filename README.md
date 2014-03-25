@@ -2,9 +2,11 @@
 
 ## Introduction
 
-learnR provides the code and simple hints for learning R programming language. This tutorial contains the materials for basic R programming and advanced R programming. The following list is the content of the tutorial.
+learnR provides the code and simple hints for learning R programming language. This tutorial contains the materials for basic R programming and advanced R programming. 
 
-### Basic R Programming
+The following list is the content of the tutorial.
+
+### A: Basic R Programming
 
 1. Introduction to R programming language
 2. RStudio
@@ -28,23 +30,29 @@ learnR provides the code and simple hints for learning R programming language. T
     - Basic functional programming
 7. Debugging in RStudio
 
-### Advanced R Programming
+### B: Advanced R Programming
 
 1. R language mechanism
 2. Data structures
-3. Database (SQLite, `{RSQLite}`)
+3. Database
 4. Parallel computing
-5. Environment
 6. Functional programming
-7. Popular packages
-    - `{jsonlite}`
-    - `{stringr}`
-    - `{reshape2}`
-    - `{plyr}`
-    - `{dplyr}`
-8. Performance and profiling
-9. C++ interface
-    - C++ Essentials
-    - Debugging C++ in Visual Studio
-    - `{Rcpp}`
+7. Profiling
 
+### C: Popular packages
+
+1. Popular packages
+2. `{jsonlite}`
+3. `{stringr}`
+4. `{reshape2}`
+5. `{plyr}`
+6. `{dplyr}`
+7. `{Rcpp}`
+
+### D: Data Visualization
+
+1. Basic plots
+2. `{ggplot2}`
+3. Graphics devices
+
+### E: Exercises
