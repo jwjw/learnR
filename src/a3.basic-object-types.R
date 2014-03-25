@@ -12,7 +12,11 @@
 
 ### Character vector
 
+### Date vector
+
 ## Matrix
+
+## Array
 
 ## List
 
