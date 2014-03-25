@@ -4,7 +4,13 @@
 
 learnR provides the code and simple hints for learning R programming language. This tutorial contains the materials for basic R programming and advanced R programming. 
 
-The following list is the content of the tutorial.
+## Prerequesites
+
+1. [R](http://mirrors.xmu.edu.cn/CRAN/bin/windows/base/)
+2. [Rtools](http://mirrors.xmu.edu.cn/CRAN/bin/windows/Rtools/Rtools31.exe)
+3. [Rstudio](http://www.rstudio.com/ide/download/preview)
+
+## Contents
 
 ### A: Basic R Programming
 
