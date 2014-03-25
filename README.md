@@ -16,7 +16,7 @@ learnR provides the code and simple hints for learning R programming language. T
 
 1. Introduction to R programming language
 2. RStudio
-3. Basic Object Types
+3. Basic objects
     - Vector (Numeric, Integer, Complex, Logical, Character)
     - Matrix
     - List
