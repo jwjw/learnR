@@ -135,15 +135,14 @@ m1[9]
 m1[3:7]
 m1[c("r1","r3"),c("c1","c3")]
 
-### Arithmetic operators for matrices
+### Operators for matrices
 m1 + m1
 m1 - 2*m1
 m1 * m1
 m1 / m1
 m1^2
 m1 %*% m1
-
-
+t(m1)
 
 ## Array
 a0 <- array(c(0,1,2,3,4,5,6,7,8,9),dim=c(1,5,2))
