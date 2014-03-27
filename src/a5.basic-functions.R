@@ -2,6 +2,7 @@
 
 ## Object functions
 
+
 ## Character functions
 cat("Hello, world!")
 message("Hello, world!")

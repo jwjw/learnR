@@ -1,5 +1,11 @@
 # Basic expressions
 
+## Assignment
+
+x1 <- 1
+x2 = 2
+
+
 ## Conditional expression
 
 ### if-else
@@ -24,19 +30,9 @@ num3 <- ifelse(num1 > 0 & num2 < 0, 1, 0)
 ## Loop expression
 
 ### for-loop
+for(i in c(1,2,3)) {
+  message("Hello, world!")
+}
 
 ### while-loop
-
-
-
-## Output expression
-
-### str
-
-### print, sprint
-
-### cat
-
-### message
-
 
