@@ -1,10 +1,11 @@
 # Basic expressions
 
-## Assignment
-
+## Assignment: `<-`, `->`, `<<-`, `->>`, `=`
 x1 <- 1
-x2 = 2
-
+2 -> x2
+x3 <<- 3
+4 ->> x4
+x5 = 5
 
 ## Conditional expression
 
@@ -34,5 +35,28 @@ for(i in c(1,2,3)) {
   message("Hello, world!")
 }
 
+for(item in c("Hello","World","Hi")) {
+  message(item)
+}
+
+for(item in list(a=c(1,2,3),b=c("a","b","c","d"))) {
+  str(item)
+}
+
+df <- data.frame(x=c(1,2,3),y=c("A","B","C"),stringsAsFactors = FALSE)
+for(col in df) {
+  str(col)
+}
+
+for(i in 1:nrow(df)) {
+  row <- df[i,]
+  str(row)
+}
+
 ### while-loop
 
+x <- 0
+while(x <= 10) {
+  message(x)
+  x <- x + 1
+}
