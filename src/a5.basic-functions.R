@@ -1,9 +1,32 @@
 # Basic functions
 
-## Object functions
+## Object functions: class(), typeof(), str()
+x <- 1
+class(x)
+typeof(x)
+str(x)
 
+x <- c(1,2,3)
+class(x)
+typeof(x)
+str(x)
 
-## Character functions
+x <- c("a","b")
+class(x)
+typeof(x)
+str(x)
+
+x <- list(a=1,b=2)
+class(x)
+typeof(x)
+str(x)
+
+x <- data.frame(a=1,b=2)
+class(x)
+typeof(x)
+str(x)
+
+## Character functions: cat(), message(), print(), sprintf()
 cat("Hello, world!")
 message("Hello, world!")
 print("Hello, world!")
