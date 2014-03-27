@@ -227,3 +227,17 @@ calc <- function(x,y,type) {
     stop("Unknown type of operation")
   }
 }
+
+## Formula
+data(LifeCycleSavings)
+help(LifeCycelSavings)
+lm(sr~pop15+pop75+dpi+ddpi,data=LifeCycleSavings)
+lm(sr~1+pop15+pop75+dpi+ddpi,data=LifeCycleSavings)
+lm(sr~pop15+pop75+dpi+ddpi-1,data=LifeCycleSavings)
+lm(sr~.,data=LifeCycleSavings)
+lm(sr~.-ddpi,data=LifeCycleSavings)
+
+lm(log(sr)~log(pop15)+log(pop75)+log(dpi)+ddpi,data=LifeCycleSavings)
+lm(sr~pop15+I(pop15^2)+pop75+I(pop75^2)+dpi+ddpi,data=LifeCycleSavings)
+
+plot(sr~ddpi,data=LifeCycleSavings)
