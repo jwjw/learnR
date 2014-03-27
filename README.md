@@ -35,6 +35,8 @@ learnR provides the code and simple hints for learning R programming language. T
     - Independence of Logic-Data-Interface
     - Basic functional programming
 7. Debugging in RStudio
+8. Essential statistics
+9. Essential data mining
 
 ### B: Advanced R Programming
 
