@@ -1,4 +1,5 @@
 # {dplyr} package
+library(dplyr)
 
 ## select
 

@@ -19,10 +19,24 @@ num1 <- as.numeric(readline("Number 1? "))
 num2 <- as.numeric(readline("Number 2? "))
 num3 <- ifelse(num1 > 0 & num2 < 0, 1, 0)
 
+
+
 ## Loop expression
+
+### for-loop
+
+### while-loop
 
 
 
 ## Output expression
+
+### str
+
+### print, sprint
+
+### cat
+
+### message
 
 
