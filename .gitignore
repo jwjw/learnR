@@ -3,6 +3,5 @@
 .RData
 output
 local
-**/Debug/**
 *.local.*
 *.suo
