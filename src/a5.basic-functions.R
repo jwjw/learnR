@@ -41,6 +41,20 @@ class(x)
 typeof(x)
 str(x)
 
+
+## Logical functions
+a1 <- c(TRUE, TRUE, FALSE)
+a2 <- c(TRUE, FALSE, FALSE)
+a1 & a2
+a1 | a2
+
+x <- rnorm(100)
+any(x > 1)
+all(x <= 4)
+
+which(x >= 1.5)
+
+
 ## Character functions: cat(), message(), print(), sprintf(), paste(), paste0()
 cat("Hello, world!")
 message("Hello, world!")
@@ -51,6 +65,18 @@ sprintf("Hello, %s! Your number is %d., and your score is %.2f","Jack",50,35.618
 paste("Hello","world")
 paste("Hello","world",sep="-")
 paste0("Hello","world")
+tolower("Hello")
+toupper("Hello")
+nchar("Hello")
+ch1 <- "Hello"
+substr(ch1,1,3)
+substr(ch1,1,3) <- "abc"
+
+## Math funcitons
+
+
+## Statistical functions
+
 
 ## Data manipulation
 
@@ -68,21 +94,38 @@ EURUSD5a <- transform(EURUSD5, Medium=(High+Low)/2)
 write.csv(EURUSD5a,"output/EURUSD5a.local.csv",row.names=FALSE)
 write.table(EURUSD5a,"output/EURUSD5a.local.txt",row.names=FALSE,sep="\t")
 
-## Logical functions
-a1 <- c(TRUE, TRUE, FALSE)
-a2 <- c(TRUE, FALSE, FALSE)
-a1 & a2
-a1 | a2
-
-x <- rnorm(100)
-any(x > 1)
-all(x <= 4)
-
-which(x >= 1.5)
-
-## Math funcitons
-
-## Statistical functions
 
 ## Higher-order functions
 
+### Example: passing function as function argument
+add <- function(x,y,z) {
+    x+y+z
+}
+product <- function(x,y,z) {
+    x*y*z
+}
+aggregate <- function(x,y,z,fun) {
+    fun(x,y,z)
+}
+
+### Example: using lapply()
+result <- list()
+for(i in seq_along(x)) {
+    result[[i]] <- f(x[i])
+}
+
+result <- lapply(x, f)
+
+### Example: using closure
+add <- function(x,y) {
+    x+y
+}
+result <- lapply(1:10, add, y=3)
+
+add <- function(y) {
+    function(x) {
+        x+y
+    }
+}
+result <- lapply(1:10,add(3))
+result <- sapply(1:10,add(3))
