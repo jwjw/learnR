@@ -1,7 +1,5 @@
 # Basic Object Types
 
-# basic functions: class(), typeof(), str()
-
 ## Vector
 
 ### Numeric vector

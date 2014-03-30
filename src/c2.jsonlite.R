@@ -2,6 +2,9 @@
 library(jsonlite)
 
 ## What is JSON
+# http://www.json.org/
+# https://en.wikipedia.org/wiki/JSON
+# http://www.w3schools.com/json/
 
 ## Why JSON
 

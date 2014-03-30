@@ -1,4 +1,5 @@
 # {plyr} package
+library(plyr)
 
 ## llply
 

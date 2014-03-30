@@ -84,6 +84,17 @@ substr(ch1,1,3) <- "abc"
 EURUSD5 <- read.csv("data/EURUSD5.csv",header=FALSE,
   col.names=c("Date","Time","Open","High","Low","Close","Volume"))
 
+sh000300 <- read.csv("data/sh000300.csv",header = T,
+  col.names=c("date","open","high","low","close","volume","tradeVolume"),
+  colClasses=c("Date","numeric","numeric","numeric","numeric","numeric","numeric"))
+us.cpi <- read.csv("data/us-cpi.csv",header = T,
+  col.names=c("year","month","cpi"),
+  colClasses=c("integer","integer","numeric"))
+us.gdp <- read.csv("data/us-gdp.csv",header = T,
+  col.names=c("year","month","gdp"),
+  colClasses=c("integer","integer","numeric"))
+us <- merge(us.gdp,us.cpi,by = c("year","month"))
+
 ### Transformation
 EURUSD5$DateTime <- strptime(paste(EURUSD5$Date,EURUSD5$Time),format="%Y.%m.%d %H:%M")
 EURUSD5 <- EURUSD5[c("DateTime","Open","High","Low","Close","Volume")]
@@ -129,3 +140,6 @@ add <- function(y) {
 }
 result <- lapply(1:10,add(3))
 result <- sapply(1:10,add(3))
+
+## Optimization
+
