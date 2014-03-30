@@ -4,24 +4,7 @@
 
 ## RGui vs. RStudio IDE
 
-### Syntax highlighting
-
-### Auto-completion
-
-### Environment monitoring
-
-### Package management
-
-### Filesystem management
-
-### Graphics management
-
-### Readily-available help
-
-### History
-
-### Version control
-
-### Debugging
-
-### Documenting
+## RStudio IDE
+# http://www.rstudio.com/ide/
+# http://www.rstudio.com/ide/screenshots/
+# https://support.rstudio.com/hc/en-us/categories/200035113-Documentation
