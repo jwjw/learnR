@@ -45,12 +45,17 @@ plot(m)
 
 ### Linear model coefficients
 coe <- m$coefficients
+coe <- coefficients(m)
 coe <- coef(m)
+
 coe["high"]
 coe[["low"]]
 
 ### Linear  model residuals
 res <- m$residuals
+res <- residuals(m)
+res <- resid(m)
+
 plot(res)
 
 ### Linear model plot
@@ -87,3 +92,30 @@ deviance(m)
 
 aov(close~high+low+log(tradeVolume),data=idx)
 anova(m)
+
+### Update a model: update()
+m1 <- update(m,close~high+low+0)
+m2 <- update(m,.~I((high+low)/2)+log(tradeVolume))
+m3 <- update(m,close~high+low+factor(up),data=transform(idx,up=c(F,diff(open)>0))[-1,])
+
+### Predict with a model: predict()
+m4 <- update(m2, data=idx[1:(nrow(idx)-51),])
+m4.real <- idx[50:nrow(idx),"close"]
+m4.pred <- predict(m4,newdata=idx[50:nrow(idx),])
+plot(x=m4.pred,y=m4.real)
+cor(m4.pred,m4.real)
+cor(diff(log(m4.pred)),diff(log(m4.real)))
+
+
+## Time series model fit
+
+### ARIMA
+x1 <- arima.sim(model=list(ar=c(0.8,-0.5),ma=c(0.5,0.2)),n = 200)
+x1.arma <- arima(x1,order = c(2,0,2),include.mean = F)
+x1.arma
+confint(x1.arma)
+AIC(x1.arma)
+logLik(x1.arma)
+
+### GARCH
+
