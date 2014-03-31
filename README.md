@@ -19,24 +19,34 @@ learnR provides the code and simple hints for learning R programming language. T
 3. Basic objects
     - Vector (Numeric, Integer, Complex, Logical, Character)
     - Matrix
+    - Array
     - List
     - Data frame
     - Function
+    - Formula
 4. Basic expressions
     - Conditional expression (`if-else`)
     - Loop expression (`for`, `while`)
     - Output expression (`cat`, `message`)
 5. Basic functions
-    - Data manipulation (data read/write, transformation)
+    - Environment functions
+    - Package functions
+    - Object functions
+    - Logical functions
+    - Character functions
     - Math functions
     - Statistical functions
+    - Data manipulation (data read/write, transformation)
     - Higher-order functions
-6. Design patterns
+    - Optimization functions
+    - Anonymous functions
+    - Meta-functions
+6. Debugging in RStudio
+7. Essential statistics
+8. Essential data mining
+9. Design patterns
     - Independence of Logic-Data-Interface
     - Basic functional programming
-7. Debugging in RStudio
-8. Essential statistics
-9. Essential data mining
 
 ### B: Advanced R Programming
 
