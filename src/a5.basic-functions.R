@@ -87,10 +87,12 @@ trunc(1.5)
 round(pi,3)
 signif(pi,3)
 
-
 polyroot(c(1,2,1,-1))
 f <- deriv(y~sin(cos(x)*y),c("x","y"),func=T)
 f(1,2)
+
+uniroot(function(x) x^3-x+1,c(-5,5))
+
 
 
 ## Statistical functions
@@ -114,6 +116,9 @@ runif(20)
 runif(20,min = 10,max = 20)
 rgamma(20,shape = 0.5)
 
+plot(dnorm,xlim=c(-3,3))
+plot(pnorm,xlim=c(-3,3))
+qnorm(c(0.01,0.99))
 
 ## Data manipulation
 
@@ -195,4 +200,11 @@ result <- lapply(1:10,add(3))
 result <- sapply(1:10,add(3))
 
 ## Optimization
+f <- function(x) x^4+3*x^2+x-1
+optimize(f,c(-6,6))
 
+f <- function(x) x^4+3*x^2+x-1
+nlm(f, 0)
+
+f <- function(x) sum((x-1:length(x))^2)
+nlm(f, c(10,10))
