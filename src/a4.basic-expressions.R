@@ -27,12 +27,26 @@ num2 <- as.numeric(readline("Number 2? "))
 num3 <- ifelse(num1 > 0 & num2 < 0, 1, 0)
 
 
-
 ## Loop expression
 
 ### for-loop
 for(i in c(1,2,3)) {
   message("Hello, world!")
+}
+
+for(i in 1:10) {
+  message(sprintf("Message %d",i))
+}
+
+
+for(i in 1:10) {
+  if(i==5) break
+  else message(sprintf("Message %d",i))
+}
+
+for(i in 1:10) {
+  if(i==5) next
+  else message(sprintf("Message %d",i))
 }
 
 for(item in c("Hello","World","Hi")) {
@@ -59,4 +73,18 @@ x <- 0
 while(x <= 10) {
   message(x)
   x <- x + 1
+}
+
+### repeat loop
+
+x <- 0
+repeat {
+  x <- x+1
+  if(x==10) break
+  else if(x==5) {
+    next
+  }
+  else {
+    message(x)
+  }
 }

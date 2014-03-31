@@ -13,6 +13,7 @@ us.gdp <- read.csv("data/us-gdp.csv",header = T,
 us <- merge(us.gdp,us.cpi,by = c("year","month"))
 rm(us.gdp,us.cpi)
 
+
 ## Descriptive statistics
 mean(idx$close)
 median(idx$close)

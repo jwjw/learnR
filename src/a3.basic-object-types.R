@@ -37,7 +37,7 @@ F
 logical(10)
 c(TRUE,TRUE,FALSE)
 as.logical(c(0,1,-2,3))
-as.logical("true")
+as.logical("false")
 as.logical("a")
 is.logical(c(FALSE,FALSE,TRUE))
 
@@ -46,13 +46,14 @@ is.logical(c(FALSE,FALSE,TRUE))
 character(3)
 c("Hello","World")
 c('This','is','something')
-"This is a 'character' enclosed in double quotes"
-'This is a "character" enclosed in single quotes'
+"This is a 'character' \"enclosed\" in double quotes"
+'This is a "character" \'enclosed\' in single quotes'
 
 ### Date vector
-as.Date("2013-05-10")
+strptime("2013.05.10 10:20:35",format = "%Y.%m.%d %H:%M:%S")
 as.Date(c("2013-05-10","2014-05-20"))
 c(as.Date("2013-05-10"),as.Date("2014-05-20"))
+
 
 ### Named vector
 c(a=1,b=2,c=3)
@@ -62,6 +63,7 @@ nv <- c(1,2,3)
 names(nv) <- c("a","b","c")
 names(nv) <- NULL
 
+
 ### Subsetting vectors
 v1 <- c(1,2,3,4)
 v1[2]
@@ -69,29 +71,30 @@ v1[2:4]
 v1[-3]
 v1[2] <- 0
 v1[2:4] <- c(0,1,3)
-v1[c(TRUE,TRUE,FALSE,FALSE)] <- c(3,2)
+v1[c(TRUE,FALSE,TRUE,FALSE)] <- c(3,2)
 v1 <= 2
 v1[v1 <= 2] <- 0
+v1^2-v1+1>=0
 v1[v1^2-v1+1>=0]
 v1[5] <- 5
 v1[10] <- 10
 
 v2 <- c(a=1,b=2,c=3,d=4)
 v2["a"]
-v2[c("a","d")]
+v2[c("a","d","d","a")]
 v2["e"] <- 5
 v2["z"] <- 26
 v2[15] <- 100
 v2["e"] <- "hello"
 
 ### Arithmetic operators for numeric/integer vectors
-c(1,2,3) + c(2,3,4)
+c(1,2,3,4) + 2
 c(1,2,3) - c(2,3,4)
 c(1,2,3) * c(2,3,4)
 c(1,2,3) / c(2,3,4)
 c(1,2,3) ^ 2
 c(1,2,3) ^ c(2,3,4)
-c(1,2,3) %% 2
+c(1,2,3,14) %% 2
 
 c(a=1,b=2,c=3) + c(b=2,c=3,d=4)
 c(a=1,b=2,3) + c(b=2,c=3,d=4)
@@ -145,7 +148,7 @@ m1 %*% m1
 t(m1)
 
 ## Array
-a0 <- array(c(0,1,2,3,4,5,6,7,8,9),dim=c(1,5,2))
+a0 <- array(c(0,1,2,3,4,5,6,7,8,9,10),dim=c(1,5,2))
 dimnames(a0) <- list(c("r1"),c("c1","c2","c3","c4","c5"),c("k1","k2"))
 
 a1 <- array(c(0,1,2,3,4,5,6,7,8,9),dim=c(1,5,2),
@@ -179,7 +182,6 @@ l3$d <- c("hello","world")
 l3
 
 
-
 ## Data frame
 
 ### Defining data frame
@@ -190,6 +192,7 @@ data.frame(id=1:5,name=c("A","A","B","B","C"),x=runif(5),y=rnorm(5),stringsAsFac
 
 df1 <- data.frame(1:5,c("A","A","B","B","C"),rnorm(5))
 colnames(df1) <- c("id","name","x")
+rownames(df1) <- letters[1:5]
 
 as.data.frame(matrix(c(1,2,3,4,5,6,7,8,9),nrow=3,byrow=FALSE))
 

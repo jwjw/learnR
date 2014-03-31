@@ -9,6 +9,10 @@ y <- 1
 objects()
 remove(x)
 rm(y)
+rm(list=objects())
+
+getwd()
+setwd("d:/")
 
 ## Package functions
 require(graphics)
@@ -94,7 +98,6 @@ f(1,2)
 uniroot(function(x) x^3-x+1,c(-5,5))
 
 
-
 ## Statistical functions
 x.norm <- rnorm(20)
 mean(x.norm)
@@ -138,7 +141,8 @@ us.gdp <- read.csv("data/us-gdp.csv",header = T,
 us <- merge(us.gdp,us.cpi,by = c("year","month"))
 
 ### Transformation
-EURUSD5$DateTime <- strptime(paste(EURUSD5$Date,EURUSD5$Time),format="%Y.%m.%d %H:%M")
+EURUSD5$DateTime <- strptime(paste(EURUSD5$Date,EURUSD5$Time),
+  format="%Y.%m.%d %H:%M")
 EURUSD5 <- EURUSD5[c("DateTime","Open","High","Low","Close","Volume")]
 
 EURUSD5a <- transform(EURUSD5, Medium=(High+Low)/2)
@@ -166,7 +170,7 @@ dbDisconnect(conn)
 
 ## Higher-order functions
 
-### Example: passing function as function argument
+### Example: passing a function as an argument
 add <- function(x,y,z) {
     x+y+z
 }
@@ -208,3 +212,63 @@ nlm(f, 0)
 
 f <- function(x) sum((x-1:length(x))^2)
 nlm(f, c(10,10))
+
+## Anonymous functions
+
+lapply(1:10,function(i) {
+  c(a=i,b=i*2,c=i*(i-1))
+})
+
+sapply(1:5,function(i,x) {
+  i+x
+},x=2)
+
+
+## Meta-functions
+
+### get
+f1 <- function(x,y) {
+  (x+y)*(x-y)
+}
+
+f2 <- function(x,y) {
+  (x^2+y^2)/(x^4+y^4+1)
+}
+
+f <- get("f1")
+f(1,2)
+
+f <- get("f2")
+f(1,2)
+
+f <- function(i) {
+  f <- get(paste0("f",i))
+  function(x,y) {
+    f(x,y)
+  }
+}
+
+f(1)(1,2)
+f(2)(1,2)
+
+fs <- lapply(1:2,f)
+fs[[1]](1,2)
+fs[[2]](1,2)
+
+
+### do.call
+f1 <- function(x,y) {
+  (x+y)*(x-y)
+}
+
+do.call("f1",list(x=1,y=2))
+
+do.call(f1,list(x=1,y=2))
+
+do.call(rbind,lapply(1:10,function(i) {
+  c(a=i,b=i*2,c=i*(i-1))
+}))
+
+do.call(cbind,lapply(1:10,function(i) {
+  c(a=i,b=i*2)
+}))
