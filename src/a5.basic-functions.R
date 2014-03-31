@@ -203,7 +203,7 @@ add <- function(y) {
 result <- lapply(1:10,add(3))
 result <- sapply(1:10,add(3))
 
-## Optimization
+## Optimization functions
 f <- function(x) x^4+3*x^2+x-1
 optimize(f,c(-6,6))
 
