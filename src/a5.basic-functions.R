@@ -22,7 +22,8 @@ options(digits=15)
 ## Package functions
 require(graphics)
 library(graphics)
-install.packages("dplyr")
+library(fUnitRoots)
+install.packages(c("dplyr","plyr","lubridate"))
 
 ## Object functions
 
@@ -71,12 +72,14 @@ a1 <- c(TRUE, TRUE, FALSE)
 a2 <- c(TRUE, FALSE, FALSE)
 a1 & a2
 a1 | a2
+!a1
 
 x <- c(-2,-3,2,3,1,0,0,1,2)
 any(x > 1)
 all(x <= 1)
 
 which(x >= 1.5)
+x[x>=1.5]
 
 ## Character functions: cat(), message(), print(), sprintf(), paste(), paste0()
 cat("Hello, world!")
@@ -116,7 +119,7 @@ polyroot(c(1,2,1,-1))
 f <- deriv(y~sin(cos(x)*y),c("x","y"),func=T)
 f(1,2)
 
-uniroot(function(x) x^3-x+1,c(-5,5))
+l <- uniroot(function(x) x^3-x+1,c(-5,5))
 
 
 ## Statistical functions
@@ -124,7 +127,7 @@ x.norm <- rnorm(20)
 mean(x.norm)
 sd(x.norm)
 median(x.norm)
-quantile(rnorm(x.norm))
+quantile(x.norm,probs = c(0.5,0.8))
 max(x.norm)
 min(x.norm)
 pmax(c(1,2,3),c(2,3,1))
@@ -196,7 +199,7 @@ dbDisconnect(conn)
 ## Higher-order functions
 
 ### Example: passing a function as an argument
-add <- function(x,y,z) {
+add <- function(x,y,z=3) {
     x+y+z
 }
 product <- function(x,y,z) {
@@ -212,13 +215,15 @@ for(i in seq_along(x)) {
     result[[i]] <- f(x[i])
 }
 
-result <- lapply(x, f)
+result <- lapply(1:10, function(i) {
+  c(a=i,b=i+1,c=i^2)
+})
 
 ### Example: using closure
 add <- function(x,y) {
     x+y
 }
-result <- lapply(1:10, add, y=3)
+result <- lapply(1:10, add)
 
 add <- function(y) {
     function(x) {
@@ -226,7 +231,7 @@ add <- function(y) {
     }
 }
 result <- lapply(1:10,add(3))
-result <- sapply(1:10,add(3))
+result <- sapply(1:10,add(30))
 
 ## Optimization functions
 f <- function(x) x^4+3*x^2+x-1
@@ -290,9 +295,9 @@ do.call("f1",list(x=1,y=2))
 
 do.call(f1,list(x=1,y=2))
 
-do.call(rbind,lapply(1:10,function(i) {
+data.frame(do.call(rbind,lapply(1:10,function(i) {
   c(a=i,b=i*2,c=i*(i-1))
-}))
+})))
 
 do.call(cbind,lapply(1:10,function(i) {
   c(a=i,b=i*2)

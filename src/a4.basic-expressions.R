@@ -23,6 +23,7 @@ local({
 
 x <- 10
 local({
+  message(x)
   x <- 5
   message(x)
 })
@@ -31,8 +32,10 @@ message(x)
 
 x <- 10
 local({
+  message(x)
   x <- 5
   local({
+    message(x)
     x <- 3
     message(x)
   })
@@ -43,6 +46,7 @@ message(x)
 
 x <- 10
 local({
+  message(x)
   x <<- 5
   local({
     x <<- 3
