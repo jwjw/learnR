@@ -7,6 +7,63 @@ x3 <<- 3
 4 ->> x4
 x5 = 5
 
+### Local evaluation
+local({
+  x1 <- 1
+  x1+1
+})
+
+local({
+  x1 <<- 1
+  x1+1
+})
+
+
+### Scoping
+
+x <- 10
+local({
+  x <- 5
+  message(x)
+})
+message(x)
+
+
+x <- 10
+local({
+  x <- 5
+  local({
+    x <- 3
+    message(x)
+  })
+  message(x)
+})
+message(x)
+
+
+x <- 10
+local({
+  x <<- 5
+  local({
+    x <<- 3
+    message(objects())
+    message(x)
+  })
+  message(objects())
+  message(x)
+})
+objects()
+message(x)
+
+### Invisible return value
+f <- function(x,y) {
+  invisible(x+y)
+}
+
+f(1,2)
+m <- f(1,2)
+m1 <- m2 <- f(1,2)
+
 ## Conditional expression
 
 ### if-else

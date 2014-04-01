@@ -14,12 +14,19 @@ rm(list=objects())
 getwd()
 setwd("d:/")
 
+getOption("digits")
+1e10 + 0.5
+options(digits=15)
+1e10 + 0.5
+
 ## Package functions
 require(graphics)
 library(graphics)
 install.packages("dplyr")
 
 ## Object functions
+
+### Object typing
 x <- 1
 class(x)
 typeof(x)
@@ -45,6 +52,19 @@ class(x)
 typeof(x)
 str(x)
 
+### Object dimensions
+df <- data.frame(a=c(1,2,3),b=c(2,3,4))
+m1 <- matrix(c(1,2,3,2,3,4,3,4,5),ncol = 3)
+a1 <- array(1:48,dim = c(2,8,3))
+dim(df)
+dim(m1)
+dim(a1)
+ncol(df)
+nrow(df)
+ncol(m1)
+nrow(m1)
+ncol(a1)
+nrow(a1)
 
 ## Logical functions
 a1 <- c(TRUE, TRUE, FALSE)
@@ -52,12 +72,11 @@ a2 <- c(TRUE, FALSE, FALSE)
 a1 & a2
 a1 | a2
 
-x <- rnorm(100)
+x <- c(-2,-3,2,3,1,0,0,1,2)
 any(x > 1)
-all(x <= 4)
+all(x <= 1)
 
 which(x >= 1.5)
-
 
 ## Character functions: cat(), message(), print(), sprintf(), paste(), paste0()
 cat("Hello, world!")
@@ -75,6 +94,8 @@ nchar("Hello")
 ch1 <- "Hello"
 substr(ch1,1,3)
 substr(ch1,1,3) <- "abc"
+strsplit("a,bb,ccc",split = ",")
+strsplit(c("Ken,24,Finance","James,25,Economics"),split = ",")
 
 ## Math funcitons
 sin(1)
@@ -110,6 +131,7 @@ pmax(c(1,2,3),c(2,3,1))
 pmin(c(1,2,3),c(2,3,1),c(3,2,1))
 summary(x.norm)
 
+
 set.seed(100)
 sample(c(1,2,3),size = 2,replace = FALSE)
 sample(c("a","b","z"),size = 10, replace = TRUE)
@@ -122,6 +144,9 @@ rgamma(20,shape = 0.5)
 plot(dnorm,xlim=c(-3,3))
 plot(pnorm,xlim=c(-3,3))
 qnorm(c(0.01,0.99))
+
+table(sample(letters[1:3],100,T))
+table(sample(letters[1:3],100,T),sample(LETTERS[1:4],100,T))
 
 ## Data manipulation
 
@@ -272,3 +297,40 @@ do.call(rbind,lapply(1:10,function(i) {
 do.call(cbind,lapply(1:10,function(i) {
   c(a=i,b=i*2)
 }))
+
+### system.time
+system.time(result <- lapply(1:2000,function(i) {
+  x <- rnorm(1000)
+  y <- rnorm(1000)
+  mean(x)+mean(y)
+}))
+
+## Plot functions
+
+### Basic plots
+x <- rnorm(100)
+y <- 2*x + rnorm(100)*0.1
+plot(x)
+plot(x,y)
+plot(x^2,main="Graph 1")
+plot(x,type="l")
+plot(y,type="l",col="red")
+
+plot(x)
+lines(y,col="red")
+
+plot(y,type="l",main="y",ylim=c(-8,8))
+points(x,pch=10,col="red")
+
+plot(sin,xlim=c(-3,3),main="Sin(x)",ylab="sin(x)")
+
+par(mfrow=c(1,2))
+plot(x,main="x")
+hist(x)
+
+data(airquality)
+View(airquality)
+oz <- airquality$Ozone
+tbl <- table(LETTERS[ceiling(oz/20)])
+barplot(tbl,main="Air quality (bar chart)")
+pie(tbl,main="Air quality (pie chart)")
