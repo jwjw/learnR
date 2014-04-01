@@ -1,7 +1,11 @@
 # R language mechanism
 
-## Subsetting
+## Lazy evaluation
 
-### Simplifying subsetting
+test3 <- function(a,b=c) {
+  c <- 1
+  a+b
+}
 
-### Preserving subsetting
+## Environment
+

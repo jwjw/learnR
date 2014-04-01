@@ -20,9 +20,3 @@ test2 <- function(ns=c(5,10,15)) {
   }
 }
 
-
-## Lazy evaluation
-test3 <- function(a,b=c) {
-  c <- 1
-  a+b
-}

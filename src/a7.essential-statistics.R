@@ -75,9 +75,7 @@ ms$cov.unscaled
 # http://www.r-tutor.com/elementary-statistics/hypothesis-testing
 ### Test null hypothesis of independence
 Box.test(res)
-
 wilcox.test(res)
-
 
 library(tseries)
 adf.test(res,alternative = "stationary", k = 1)
@@ -119,4 +117,4 @@ AIC(x1.arma)
 logLik(x1.arma)
 
 ### GARCH
-
+library(fGarch)
