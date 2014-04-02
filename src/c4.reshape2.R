@@ -37,8 +37,7 @@ dcast(aql, month ~ variable, fun.aggregate = mean, na.rm = TRUE)
 ## Example: Converting long-format stacked stock data to wide format
 require("RSQLite")
 conn <- dbConnect(SQLite(), "d:/data/fmarket.sqlite")
-table.tick <- dbGetQuery(conn, sprintf("SELECT t.Stkcd AS code,t.Trddt AS date,t.Clsprc AS price FROM Tick t,SH000010 c WHERE t.Stkcd=c.Stkcd AND t.Trddt BETWEEN %d AND %d",
-  20130101, 20130731))
+table.tick <- dbGetQuery(conn, sprintf("SELECT t.Stkcd AS code,t.Trddt AS date,t.Clsprc AS price FROM Tick t,SH000010 c WHERE t.Stkcd=c.Stkcd AND t.Trddt BETWEEN %d AND %d", 20130101, 20130731))
 dbDisconnect(conn)
 
 require("reshape2")
