@@ -47,10 +47,12 @@ e1 <- as.environment(l1)
 e2 <- new.env()
 e2$a <- 0
 e2$b <- 0
+e3 <- list2env(l1)
 
 ls.str(l1)
 ls.str(e1)
 ls.str(e2)
+ls.str(e3)
 
 fun <- function(x) {
   x$a <- x$a+1
@@ -66,6 +68,10 @@ ls.str(e1)
 
 fun(e2)
 ls.str(e2)
+
+fun(e3)
+ls.str(e3)
+
 
 get("a",envir = e1)
 get("b",envir = e2)
@@ -117,8 +123,15 @@ eval(e2,env)
 env <- as.environment(list(x=20))
 eval(e2,env)
 
+# http://stackoverflow.com/questions/22805816/what-is-the-mechanism-that-makes-work-when-defined-by-in-empty-environment
+
 env <- as.environment(list(x=20,`+`=function(a,b) {a+b}))
+eval(e2,env)
+
+env <- list2env(list(x=20))
 eval(e2,env)
 
 e3 <- parse(text="x <- rnorm(100)")
 eval(e3)
+
+# http://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff/
