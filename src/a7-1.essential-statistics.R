@@ -73,7 +73,7 @@ ms$cov.unscaled
 
 ## Statistical hypothesis testing
 # http://www.r-tutor.com/elementary-statistics/hypothesis-testing
-### Test null hypothesis of independence
+t.test(res)
 Box.test(res)
 wilcox.test(res)
 
@@ -118,3 +118,10 @@ logLik(x1.arma)
 
 ### GARCH
 library(fGarch)
+x2 <- garchSim()
+x2.fit <- garchFit(~garch(1,1),data = x2)
+
+ret <- diff(log(idx$close))
+ret.fit <- garchFit(~garch(1,1),data=ret)
+plot(ret.fit)
+plot(ret.fit@residuals,main="Residuals")
