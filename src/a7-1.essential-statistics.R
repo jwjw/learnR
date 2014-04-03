@@ -13,6 +13,7 @@ us.gdp <- read.csv("data/us-gdp.csv",header = T,
 us <- merge(us.gdp,us.cpi,by = c("year","month"))
 rm(us.gdp,us.cpi)
 
+
 ## Descriptive statistics
 mean(idx$close)
 median(idx$close)
@@ -72,11 +73,9 @@ ms$cov.unscaled
 
 ## Statistical hypothesis testing
 # http://www.r-tutor.com/elementary-statistics/hypothesis-testing
-### Test null hypothesis of independence
+t.test(res)
 Box.test(res)
-
 wilcox.test(res)
-
 
 library(tseries)
 adf.test(res,alternative = "stationary", k = 1)
@@ -118,4 +117,11 @@ AIC(x1.arma)
 logLik(x1.arma)
 
 ### GARCH
+library(fGarch)
+x2 <- garchSim()
+x2.fit <- garchFit(~garch(1,1),data = x2)
 
+ret <- diff(log(idx$close))
+ret.fit <- garchFit(~garch(1,1),data=ret)
+plot(ret.fit)
+plot(ret.fit@residuals,main="Residuals")

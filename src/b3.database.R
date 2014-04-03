@@ -1,15 +1,50 @@
 # Database
 
+## SQL
+# http://www.w3schools.com/sql/
+
+
+## Excel Worksheet
+library(RODBC)
+conn <- odbcConnectExcel2007("data/namelist.xlsx",readOnly = TRUE)
+sqlTables(conn)
+students <- sqlFetch(conn,"Students")
+grades <- sqlQuery(conn,"SELECT * FROM [Grades$]")
+df <- sqlQuery(conn,"SELECT * FROM [Students$] INNER JOIN [Grades$] ON [Grades$].Name = [Students$].Name")
+odbcClose(conn)
+
+
 ## SQLite database
+# http://www.sqlite.org/
+require(RSQLite)
 
 ## Creating SQLite database
 
+### Creating file-based batabase
+conn <- dbConnect(SQLite(),"data/example.local.sqlite")
+n <- 1000000
+products.df <- data.frame(i=1:n,type=sample(LETTERS,n,T),
+  class=sample(LETTERS[1:3],n,T),x=rnorm(n,6,2),y=rbinom(n,10,0.6))
+dbWriteTable(conn,"products",products.df)
+dbDisconnect(conn)
 
-## Managing SQLite database
+### Creating memory database
+conn <- dbConnect(SQLite())
+n <- 20000
+products.df <- data.frame(i=1:n,type=sample(LETTERS,n,T),
+  class=sample(LETTERS[1:3],n,T),x=rnorm(n),y=rbinom(n,10,0.3))
+dbWriteTable(conn,"products",products.df)
+
+products.A <- dbGetQuery(conn,"SELECT * FROM products WHERE type='A'")
+dbDisconnect(conn)
 
 
 ## Operating SQLite database
-library(RSQLite)
+require(RSQLite)
+conn <- dbConnect(SQLite(),"data/example.local.sqlite")
+products.A <- dbGetQuery(conn,"SELECT * FROM products WHERE type='A'")
+products.subset <- dbGetQuery(conn,"SELECT i,class,x+y AS z FROM products WHERE type='A' AND x>=8")
+dbDisconnect(conn)
 
 
-## SQL
+### Managing SQLite database
