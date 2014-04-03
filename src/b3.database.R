@@ -4,10 +4,10 @@
 # http://www.w3schools.com/sql/
 
 
-
 ## Excel Worksheet
 library(RODBC)
 conn <- odbcConnectExcel2007("data/namelist.xlsx",readOnly = TRUE)
+sqlTables(conn)
 students <- sqlFetch(conn,"Students")
 grades <- sqlQuery(conn,"SELECT * FROM [Grades$]")
 df <- sqlQuery(conn,"SELECT * FROM [Students$] INNER JOIN [Grades$] ON [Grades$].Name = [Students$].Name")
@@ -47,6 +47,4 @@ products.subset <- dbGetQuery(conn,"SELECT i,class,x+y AS z FROM products WHERE 
 dbDisconnect(conn)
 
 
-
 ### Managing SQLite database
-
