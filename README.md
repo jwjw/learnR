@@ -1,8 +1,8 @@
-# Radar
+# learnR
 
 ## Introduction
 
-learnR provides the code and simple hints for learning R programming language. This tutorial contains the materials for basic R programming and advanced R programming. 
+learnR is a tutorial for R programming language at basic and advanced levels, and its application in data transformation, tatistical computing, time series analysis, data mining, financial computing, etc.
 
 ## Prerequesites
 
