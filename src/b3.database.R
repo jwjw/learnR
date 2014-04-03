@@ -1,5 +1,19 @@
 # Database
 
+## SQL
+# http://www.w3schools.com/sql/
+
+
+
+## Excel Worksheet
+library(RODBC)
+conn <- odbcConnectExcel2007("data/namelist.xlsx",readOnly = TRUE)
+students <- sqlFetch(conn,"Students")
+grades <- sqlQuery(conn,"SELECT * FROM [Grades$]")
+df <- sqlQuery(conn,"SELECT * FROM [Students$] INNER JOIN [Grades$] ON [Grades$].Name = [Students$].Name")
+odbcClose(conn)
+
+
 ## SQLite database
 # http://www.sqlite.org/
 require(RSQLite)
@@ -24,6 +38,7 @@ dbWriteTable(conn,"products",products.df)
 products.A <- dbGetQuery(conn,"SELECT * FROM products WHERE type='A'")
 dbDisconnect(conn)
 
+
 ## Operating SQLite database
 require(RSQLite)
 conn <- dbConnect(SQLite(),"data/example.local.sqlite")
@@ -31,14 +46,7 @@ products.A <- dbGetQuery(conn,"SELECT * FROM products WHERE type='A'")
 products.subset <- dbGetQuery(conn,"SELECT i,class,x+y AS z FROM products WHERE type='A' AND x>=8")
 dbDisconnect(conn)
 
-## Querying SQLite database
-
-### SQL
 
 
-### SQL in R
-require(RSQLite)
+### Managing SQLite database
 
-
-## Managing SQLite database
-### Using SQLite Expert
