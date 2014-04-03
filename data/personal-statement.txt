@@ -1,0 +1,3 @@
+Hello, my name is James, and I am 20 years old. I'm currently working for ABC company.
+Hi, my name is Jane. I'm 19 years old. I'm working for DEF company.
+Good morning, my name is Jack and I'm 21 years old. I'm now working for G company.

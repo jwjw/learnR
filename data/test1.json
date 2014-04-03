@@ -1,0 +1,19 @@
+{
+    "title": "test1",
+    "sample": 100,
+    "functions": {
+        "rnorm": {
+            "mean": 6,
+            "sd": 3
+        },
+        "runif": {
+            "min": 0,
+            "max": 10
+        },
+        "rbinom": {
+            "size": 10,
+            "prob": 0.6
+        }
+    },
+    "aggregate": ["mean","sd","max","min"]
+}
