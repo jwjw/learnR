@@ -33,8 +33,10 @@ t.test(yards ~ outside, data = field.goals.inout)
 # Comparing paired data
 library(nutshell)
 data(SPECint2006)
-t.test(subset(SPECint2006, Num.Chips == 1 & Num.Cores == 2)$Baseline, subset(SPECint2006, Num.Chips == 1 & Num.Cores == 2)$Result, paired = T)
-plot(subset(SPECint2006, Num.Chips == 1 & Num.Cores == 2)$Baseline, subset(SPECint2006, Num.Chips == 1 & Num.Cores == 2)$Result)
+t.test(subset(SPECint2006, Num.Chips == 1 & Num.Cores == 2)$Baseline,
+  subset(SPECint2006, Num.Chips == 1 & Num.Cores == 2)$Result, paired = T)
+plot(subset(SPECint2006, Num.Chips == 1 & Num.Cores == 2)$Baseline,
+  subset(SPECint2006, Num.Chips == 1 & Num.Cores == 2)$Result)
 
 # Comparing variances of two populations
 var.test(yards ~ outside, data = field.goals.inout)
@@ -85,13 +87,15 @@ kruskal.test(age ~ Cause, data = mort06.smpl)
 # Comparing variances
 fligner.test(age ~ Cause, data = mort06.smpl)
 # Difference in scale parameters
-ansari.test(subset(SPECint2006, Num.Chips == 1 & Num.Cores == 2)$Baseline, subset(SPECint2006, Num.Chips == 1 & Num.Cores == 2)$Result)
-mood.test(subset(SPECint2006, Num.Chips == 1 & Num.Cores == 2)$Baseline, subset(SPECint2006, Num.Chips == 1 & Num.Cores == 2)$Result)
+ansari.test(subset(SPECint2006, Num.Chips == 1 & Num.Cores == 2)$Baseline,
+  subset(SPECint2006, Num.Chips == 1 & Num.Cores == 2)$Result)
+mood.test(subset(SPECint2006, Num.Chips == 1 & Num.Cores == 2)$Baseline,
+  subset(SPECint2006, Num.Chips == 1 & Num.Cores == 2)$Result)
 
 # Discrete Data
 library(nutshell)
 data(field.goals)
-field.goals.goodbad <- field.goals[field.goals$play.type == "FG good" | field.goals$play.type == "FG no", ]
+field.goals.goodbad <- field.goals[field.goals$play.type %in% c("FG good","FG no"), ]
 field.goals.table <- table(field.goals.goodbad$play.type, field.goals.goodbad$stadium.type)
 field.goals.table
 field.goals.table.t <- t(field.goals.table[3:4, ])
