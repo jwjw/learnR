@@ -1,3 +1,5 @@
 # LICENSE
 
-This tutorial is only for private use and should not be used for commercial purpose.
+This tutorial is only for educational use and should not be used for commercial purpose.
+
+The `{nutshell}` package is under [CC BY-NC-ND 3.0 US](http://creativecommons.org/licenses/by-nc-nd/3.0/us/) license.
