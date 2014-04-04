@@ -1,5 +1,6 @@
 # Basic plots
 
+
 ## Scatter plot
 
 ## Line plot

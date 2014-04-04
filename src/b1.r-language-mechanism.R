@@ -32,11 +32,13 @@ fun <- function(a,b) {
 
 fun(1,2)
 
+
 ## Typed object searching
 list <- list(a=1,b=2)
 list2 <- list(a=2,b=3)
 list.a <- list$a
 list2.b <- list2$b
+
 
 ## Environment
 
