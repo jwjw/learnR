@@ -55,6 +55,18 @@ df.summary <-
   mutate(density.smean=density.mean/density.sd) %.%
   arrange(desc(density.smean))
 
+
+
 ## Applications with {hflights} data
 library(hflights)
 data(hflights)
+
+### Example 1: Flight speed variations across different seasons and carriers
+ex1 <-
+  hflights %.%
+  mutate(Season=Month%%4+1,Speed=Distance/ActualElapsedTime) %.%
+  group_by(Season,UniqueCarrier) %.%
+  summarize(n=length(Speed),speed.mean=mean(Speed,na.rm = T),
+    speed.median=median(Speed,na.rm=T),
+    speed.sd=sd(Speed,na.rm=T)) %.%
+  arrange(desc(speed.mean/speed.sd))
