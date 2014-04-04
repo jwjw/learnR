@@ -68,6 +68,12 @@ f(1,2)
 m <- f(1,2)
 m1 <- m2 <- f(1,2)
 
+### Quotation
+`+a` <- c(1,2,3)
+`-a` <- function(a,d) { a-d }
+l1 <- list(`a+-`=rnorm(10),`a-+`=rnorm(10))
+data.frame(`a-+`=rnorm(10),`a+-`=rnorm(10))
+
 ## Conditional expression
 
 ### if-else
