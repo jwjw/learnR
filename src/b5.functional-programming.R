@@ -14,6 +14,8 @@
 
 ### mapply
 
+### tapply
+
 ### Map
 
 ### Reduce
