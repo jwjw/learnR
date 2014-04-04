@@ -115,6 +115,9 @@ x1.arma
 confint(x1.arma)
 AIC(x1.arma)
 logLik(x1.arma)
+x1.pred <- predict(x1.arma,n.ahead = 5)
+plot(x1,xlim=c(1,205))
+lines(x1.pred$pred,col="red")
 
 ### GARCH
 library(fGarch)
