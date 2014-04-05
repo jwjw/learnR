@@ -7,7 +7,11 @@
 # SELECT FROM WHERE ORDER BY
 # SELECT FROM WHERE GROUP BY
 
-## Excel Worksheet
+## ODBC
+
+### Excel Worksheet
+
+
 library(RODBC)
 conn <- odbcConnectExcel2007("data/namelist.xlsx",readOnly = TRUE)
 sqlTables(conn)
@@ -16,8 +20,19 @@ grades <- sqlQuery(conn,"SELECT * FROM [Grades$]")
 df <- sqlQuery(conn,"SELECT * FROM [Students$] INNER JOIN [Grades$] ON [Grades$].Name = [Students$].Name")
 odbcClose(conn)
 
+### Excel Binary Worksheet
+# http://social.msdn.microsoft.com/Forums/en-US/0993e144-2e32-4915-be17-ff076902f983/excel-binary-workbook-xlsb?forum=isvvba
 
-## SQLite database
+library(RODBC)
+conn <- odbcConnectExcel2007("data/namelist.xlsb",readOnly = TRUE)
+sqlTables(conn)
+students <- sqlFetch(conn,"Students")
+grades <- sqlQuery(conn,"SELECT * FROM [Grades$]")
+df <- sqlQuery(conn,"SELECT * FROM [Students$] INNER JOIN [Grades$] ON [Grades$].Name = [Students$].Name")
+odbcClose(conn)
+
+
+## SQLite
 # http://www.sqlite.org/
 require(RSQLite)
 
