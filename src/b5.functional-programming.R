@@ -35,6 +35,10 @@ ou.coe
 
 ### lapply
 lapply(1:10,function(i) {
+  i^2
+})
+
+lapply(1:10,function(i) {
   c(i,i+1)
 })
 
@@ -83,19 +87,78 @@ lapply(data.frame(x=1:10,y=letters[1:10],z=factor(1:10)),function(col) {
 })
 
 ### sapply
+sapply(1:10,function(i) {
+  i^2
+})
 
+sapply(1:10,function(i) {
+  c(i,i^2)
+})
+
+sapply(1:10,function(i) {
+  c(x=i,y=i^2)
+})
+
+sapply(list(a=1:10,b=3:6), function(i) {
+  c(x=i,y=i^2)
+})
+
+sapply(list(a=1:10,b=3:6), function(i) {
+  rbind(x=i,y=i^2)
+})
+
+sapply(list(a=1:10), function(i) {
+  rbind(x=i,y=i^2)
+})
 
 ### vapply
+vapply(1:10,function(i) {
+  i^2
+},numeric(1))
+
+vapply(1:10,function(i) {
+  c(i,i^2)
+},numeric(2))
+
+vapply(1:10,function(i) {
+  c(x=i,y=i^2)
+},numeric(2))
 
 
 ### apply
+m <- matrix(1:50,nrow = 10,ncol = 5)
+m
+apply(m,1,mean)
+apply(m,2,mean)
+apply(m,1,sum)
+apply(m,2,sum)
+apply(m,1,function(row) {
+  c(row[1],row[2])
+})
+apply(m,2,function(row) {
+  c(row[1],row[2])
+})
 
 
 ### mapply
+mapply(rep, 1:4, 4:1)
 
 
 ### tapply
+groups <- as.factor(rbinom(100, 5, 0.4))
+tapply(groups, groups, length)
 
+n <- 17
+fac <- factor(rep(1:3, length = n), levels = 1:5)
+table(fac)
+tapply(1:n, fac, sum)
+sum((1:n)[c(T,F,F)])
+sum((1:n)[c(F,T,F)])
+sum((1:n)[c(F,F,T)])
+
+tapply(1:n, fac, sum, simplify = FALSE)
+tapply(1:n, fac, range)
+tapply(1:n, fac, quantile)
 
 ### Map
 
