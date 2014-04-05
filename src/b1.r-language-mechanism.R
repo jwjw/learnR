@@ -40,6 +40,30 @@ list.a <- list$a
 list2.b <- list2$b
 
 
+## ...
+tplot <- function(...,type=c("plot","hist"),message=TRUE) {
+  par(mfrow=c(1,length(type)))
+  if(message) message("Plot started")
+  lapply(type, function(f) {
+    if(is.function(f)) {
+      fun <- f
+    } else if (is.character(f)) {
+      fun <- get(f)
+    } else {
+      stop("'type' must be character or function")
+    }
+    fun(...)
+  })
+  if(message) message("Plot finished")
+}
+
+tplot(rnorm(100),type=c("plot","hist"))
+tplot(rnorm(100),type=c(plot,hist))
+tplot(rnorm(100),type=c(plot,hist,function(...) {plot(...,col="red")}))
+tplot(rnorm(100),col="red",type=c(plot,hist),message = F)
+
+
+
 ## Environment
 
 ### Value type: locally mutable
