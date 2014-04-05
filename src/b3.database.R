@@ -2,7 +2,10 @@
 
 ## SQL
 # http://www.w3schools.com/sql/
-
+# SELECT FROM
+# SELECT FROM WHERE
+# SELECT FROM WHERE ORDER BY
+# SELECT FROM WHERE GROUP BY
 
 ## Excel Worksheet
 library(RODBC)
@@ -18,15 +21,16 @@ odbcClose(conn)
 # http://www.sqlite.org/
 require(RSQLite)
 
-## Creating SQLite database
+### Creating SQLite database
 
-### Creating file-based batabase
+#### Creating file-based batabase
 conn <- dbConnect(SQLite(),"data/example.local.sqlite")
 n <- 1000000
 products.df <- data.frame(i=1:n,type=sample(LETTERS,n,T),
   class=sample(LETTERS[1:3],n,T),x=rnorm(n,6,2),y=rbinom(n,10,0.6))
 dbWriteTable(conn,"products",products.df)
 dbDisconnect(conn)
+
 
 ### Creating memory database
 conn <- dbConnect(SQLite())
@@ -39,7 +43,7 @@ products.A <- dbGetQuery(conn,"SELECT * FROM products WHERE type='A'")
 dbDisconnect(conn)
 
 
-## Operating SQLite database
+### Operating SQLite database
 require(RSQLite)
 conn <- dbConnect(SQLite(),"data/example.local.sqlite")
 products.A <- dbGetQuery(conn,"SELECT * FROM products WHERE type='A'")
@@ -48,3 +52,18 @@ dbDisconnect(conn)
 
 
 ### Managing SQLite database
+#### SQLite Manager for Firefox
+# https://addons.mozilla.org/en-US/firefox/addon/sqlite-manager/
+
+#### SQLite Expert Personal/Professional
+# http://www.sqliteexpert.com/
+
+
+### Querying data.frame as SQLite database
+library(sqldf)
+n <- 1000000
+products.df <- data.frame(i=1:n,type=sample(LETTERS,n,T),
+  class=sample(LETTERS[1:3],n,T),x=rnorm(n,6,2),y=rbinom(n,10,0.6))
+products.A <- sqldf("SELECT * FROM [products.df] WHERE type='A'")
+products.subset <- sqldf("SELECT i,class,x+y AS z FROM [products.df] WHERE type='A' AND x>=8")
+products.a1 <- sqldf("SELECT type,class, COUNT(x) as n, AVG(x) AS xmean, AVG(y) AS ymean FROM [products.df] GROUP BY type,class")
