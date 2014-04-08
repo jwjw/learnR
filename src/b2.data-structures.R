@@ -1,6 +1,8 @@
 # Data structures
 
 ## S3 object
+
+### Using S3 object
 library(stats)
 x <- rnorm(100)
 y <- 2*x+rnorm(100)*0.1
@@ -9,6 +11,39 @@ class(m)
 plot(m)
 coef(m)
 plot(resid(m))
+
+### Defining S3 object
+abu1 <- list(title="abu object",fun=rnorm,args=list(n=30,mean=1,sd=1))
+class(abu1) <- "abu"
+plot.abu <- function(x,...) {
+  call <- match.call()
+  message(sprintf("Plotting %s",x$title))
+  num <- do.call(x$fun,x$args)
+  plot(num,main=call$x,...)
+}
+
+plot(abu1)
+plot(abu1,col="red",type="l")
+
+abu2 <- structure(
+  list(title="abu object 2",fun=runif,args=list(n=40,min=-1,max=2)),
+  class="abu")
+class(abu2)
+plot(abu2,col="red")
+
+sabu <- structure(
+  list(title="abu object 2",fun=runif,args=list(n=40,min=-1,max=2),
+    start=function(.self){ message("sabu") }),
+  class=c("sabu","abu"))
+
+plot.sabu <- function(x,...) {
+  x$start(x)
+  plot.abu(x,...)
+}
+
+class(sabu)
+plot(sabu)
+plot.abu(sabu)
 
 
 ## S4 object
