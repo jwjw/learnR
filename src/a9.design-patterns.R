@@ -13,7 +13,10 @@ profile.default <- list(
 )
 
 profile.user <- list(
-  n = 30
+  n = 50,
+  random=c("rnorm","runif","rnorm","runif"),
+  columns = c("x","y","z","w"),
+  range = c(0.4,0.6)
 )
 
 profile <- modifyList(profile.default,profile.user)

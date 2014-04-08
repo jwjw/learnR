@@ -32,7 +32,7 @@ cor(log(us$gdp),us$cpi)
 
 mean(idx$close,trim = 0.05)
 mean(idx$close,trim = 0.1)
-sapply(list(mean=mean,sd=mean,max=max,min=min),function(f) f(idx$close))
+sapply(list(mean=mean,sd=sd,max=max,min=min),function(f) f(idx$close))
 
 ## Linear regression
 
@@ -111,7 +111,6 @@ cor(diff(log(m4.pred)),diff(log(m4.real)))
 ### ARIMA
 x1 <- arima.sim(model=list(ar=c(0.8,-0.5),ma=c(0.5,0.2)),n = 200)
 x1.arma <- arima(x1,order = c(2,0,2),include.mean = F)
-x1.arma
 confint(x1.arma)
 AIC(x1.arma)
 logLik(x1.arma)

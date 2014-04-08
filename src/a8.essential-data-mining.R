@@ -35,7 +35,7 @@ pred <- predict(fit,newdata=vdata)
 preds <- pred >= 0.9 | pred <= 0.3
 vdata.pred <- logical(length(pred))
 vdata.pred[pred>=0.9] <- TRUE
-vdata.pred[pred<=0.1] <- FALSE
+vdata.pred[pred<=0.3] <- FALSE
 vdata.pred <- vdata.pred[preds]
 vdata.actual <- (vdata$ArrDelay>0)[preds]
 table(pred=vdata.pred,actual=vdata.actual)
