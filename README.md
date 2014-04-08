@@ -71,6 +71,5 @@ learnR is a tutorial for R programming language at basic and advanced levels, an
 
 1. Basic plots
 2. `{ggplot2}`
-3. Graphics devices
 
 ### E: Exercises

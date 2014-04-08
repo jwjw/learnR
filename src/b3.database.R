@@ -11,7 +11,6 @@
 
 ### Excel Worksheet
 
-
 library(RODBC)
 conn <- odbcConnectExcel2007("data/namelist.xlsx",readOnly = TRUE)
 sqlTables(conn)

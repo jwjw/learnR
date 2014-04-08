@@ -1,5 +1,0 @@
-# Graphics devices
-
-## png
-
-## pdf
