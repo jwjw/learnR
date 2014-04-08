@@ -95,6 +95,10 @@ ls.str(e1)
 ls.str(e2)
 ls.str(e3)
 
+parent.env(e1)
+parent.env(e2)
+parent.env(e3)
+
 fun <- function(x) {
   x$a <- x$a+1
   x$b <- x$b+1
@@ -112,7 +116,6 @@ ls.str(e2)
 
 fun(e3)
 ls.str(e3)
-
 
 get("a",envir = e1)
 get("b",envir = e2)
@@ -176,3 +179,31 @@ e3 <- parse(text="x <- rnorm(100)")
 eval(e3)
 
 # http://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff/
+
+## Call
+c1 <- call("rnorm",10,mean=5,sd=1)
+eval(c1)
+c1.list <- as.list(c1)
+c1.list[[2]] <- 20
+c2 <- as.call(c1.list)
+c2
+eval(c2)
+
+c1.list[[2]] <- quote(n)
+c3 <- as.call(c1.list)
+c3
+eval(c3)
+n <- 30
+eval(c3)
+rm(n)
+
+env <- new.env()
+env$n <- 20
+eval(c3,env)
+
+fun1 <- function(x,f) {
+  f <- substitute(f)
+  fl <- as.list(f)
+  call <- as.call(c(fl[1],quote(x),fl[-1]))
+  eval(call)
+}
