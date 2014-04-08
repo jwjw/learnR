@@ -48,7 +48,8 @@ plot.abu(sabu)
 
 ## S4 object
 
-### fUnitRoots
+### Using S4 object
+#### fUnitRoots
 library(fUnitRoots)
 x <- cumsum(rnorm(200))
 y <- 2*x+norm(200)*0.1
@@ -58,7 +59,7 @@ adf <- adfTest(res,type="nc")
 class(adf)
 adf@test$statistic
 
-### MLE
+#### MLE
 x <- rnorm(100,mean = 10,sd = 3)
 norm.lik <- function(x) {
   function(mean,sd) {
