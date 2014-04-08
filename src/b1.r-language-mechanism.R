@@ -70,22 +70,14 @@ tplot(rnorm(100),col="red",type=c(plot,hist),message = F)
 
 rnorm(100,10,1) %|% log %|% diff %|% plot
 
-`%|%` <- function(x,f) {
-  call <- match.call()
-  if(is.name(call$f)) {
-    f(x)
-  } else if(is.call(call$f)) {
-    env <- new.env()
-    env$`.` <- x
-    eval(call$f,envir = env)
-  } else {
-    stop("Error: unsupported type of function call")
-  }
-}
+# pipeline operator provided by {pipeR}, %>% and %>>%
+library(pipeR)
 
-rnorm(100,10,1) %|% log %|% diff %|% plot(x=.,main=sprintf("Length: %d",length(.)),col="red",type="l")
+rnorm(100,10,1) %>% log %>% diff %>% plot
+c(rnorm(100),rnorm(100,1,1)) %>% sample(size=50,replace = F)
+c(rnorm(100),rnorm(100,1,1)) %>>% sample(.,size=length(.)/10,replace = F)
+c(rnorm(100),rnorm(100,1,1)) %>% hist(main="histogram")
 
-# pipeline operator provided by {magrittr}, %>%
 
 ## Environment
 
