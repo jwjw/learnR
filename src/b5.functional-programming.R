@@ -161,9 +161,22 @@ tapply(1:n, fac, range)
 tapply(1:n, fac, quantile)
 
 ### Map
-
+Map(function(x) x+1, 1:5)
+Map(function(x,y) x+y, 1:5, 6:10)
+Map(function(x,y,z) x*y+y*z+x*z, 1:3,4,6:11)
 
 ### Reduce
+add <- function(x) Reduce(`+`,x)
+add(list(1,2,3))
 
+times <- function(x) Reduce(`*`,x,init = 1)
+times(list(1,2,3))
 
 ### Filter
+Filter(function(x) x>=0, rnorm(10))
+
+### Position
+Position(function(x) x>=0, c(-2,-1,0,1,2,3))
+
+### Find
+Find(function(x) x>=0, c(-2,-1,0,1,2,3))
