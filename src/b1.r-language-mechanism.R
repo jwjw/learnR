@@ -40,6 +40,26 @@ list.a <- list$a
 list2.b <- list2$b
 
 
+## Memory usage
+# http://adv-r.had.co.nz/memory.html
+# https://stat.ethz.ch/R-manual/R-devel/library/base/html/tracemem.html
+# http://r.789695.n4.nabble.com/Understanding-tracemem-td4636321.html
+gc()
+df <- data.frame(x=rnorm(2000000))
+memory.size()
+df1 <- df
+df2 <- df
+memory.size()
+tracemem(df)
+tracemem(df1)
+tracemem(df2)
+
+df1$x[10000]
+df2$x[10000] <- 0.5
+df1$x[10000] <- 0.6
+gc()
+
+
 ## ...
 tplot <- function(...,type=c("plot","hist"),message=TRUE) {
   par(mfrow=c(1,length(type)))
