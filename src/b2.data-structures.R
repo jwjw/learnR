@@ -60,6 +60,7 @@ class(adf)
 adf@test$statistic
 
 #### MLE
+library(stats4)
 x <- rnorm(100,mean = 10,sd = 3)
 norm.lik <- function(x) {
   function(mean,sd) {

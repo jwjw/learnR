@@ -2,12 +2,10 @@
 
 ## SQL
 # http://www.w3schools.com/sql/
-# SELECT FROM
-# SELECT FROM WHERE
-# SELECT FROM WHERE ORDER BY
-# SELECT FROM WHERE GROUP BY
+# http://www.w3schools.com/sql/sql_quickref.asp
 
-## ODBC
+
+## Open Database Connectivity (ODBC)
 
 ### Excel Worksheet
 

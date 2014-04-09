@@ -75,7 +75,7 @@ library(pipeR)
 
 rnorm(100,10,1) %>% log %>% diff %>% plot
 c(rnorm(100),rnorm(100,1,1)) %>% sample(size=50,replace = F)
-c(rnorm(100),rnorm(100,1,1)) %>>% sample(.,size=length(.)/10,replace = F)
+c(rnorm(100),rnorm(100,1,1)) %>>% sample(.,size=length(.)*0.1,replace = F)
 c(rnorm(100),rnorm(100,1,1)) %>% hist(main="histogram")
 
 
@@ -102,7 +102,7 @@ parent.env(e3)
 fun <- function(x) {
   x$a <- x$a+1
   x$b <- x$b+1
-  invisible(NULL)
+  invisible(x)
 }
 
 fun(l1)
