@@ -44,21 +44,26 @@ list2.b <- list2$b
 # http://adv-r.had.co.nz/memory.html
 # https://stat.ethz.ch/R-manual/R-devel/library/base/html/tracemem.html
 # http://r.789695.n4.nabble.com/Understanding-tracemem-td4636321.html
-gc()
-df <- data.frame(x=rnorm(2000000))
-memory.size()
-df1 <- df
-df2 <- df
-memory.size()
+memory.change <- function(expr) {
+  gc()
+  mem.a <- memory.size()
+  eval(expr)
+  gc()
+  mem.b <- memory.size()
+  mem.b - mem.a
+}
+
+memory.change(df <- data.frame(x=rnorm(4000000)))
+
+memory.change(df1 <- df)
+memory.change(df2 <- df)
+memory.change(df3 <- df)
+
 tracemem(df)
-tracemem(df1)
-tracemem(df2)
 
-df1$x[10000]
-df2$x[10000] <- 0.5
-df1$x[10000] <- 0.6
-gc()
-
+memory.change(df1$x[10000] <- 0.5)
+memory.change(df2$x[10000] <- 0.6)
+memory.change(rm(df,df1,df2,df3))
 
 ## ...
 tplot <- function(...,type=c("plot","hist"),message=TRUE) {
