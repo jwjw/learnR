@@ -10,3 +10,7 @@
 ## Pie charts
 
 ## Composing plots
+
+## Partitioning plots
+
+## Graphics devices
