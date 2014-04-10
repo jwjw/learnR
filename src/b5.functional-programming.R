@@ -8,7 +8,7 @@
 
 ## Closures
 
-### MLE
+### MLE (OU-process)
 require("sde")
 
 spread <- sde.sim(0,1,0,1000,
@@ -54,6 +54,10 @@ do.call(rbind,lapply(c(a=1,b=2,c=3), function(i) {
   c(x=i,y=i+1)
 }))
 
+do.call(rbind,lapply(1:10, function(i) {
+  data.frame(x=rnorm(i),y=rnorm(i)*2)
+}))
+
 data.frame(do.call(rbind,lapply(c(a=1,b=2,c=3), function(i) {
   c(i,i+1)
 })))
@@ -65,6 +69,12 @@ data.frame(do.call(rbind,lapply(c(a=1,b=2,c=3), function(i) {
 lapply(list(1:10), function(i) {
   class(i)
 })
+
+lapply(list(1:10), class)
+
+do.call(c,lapply(1:10,function(i){
+  rnorm(i)
+}))
 
 lapply(list(x=1:10,y=c("a","b","c")),function(i) {
   if(is.numeric(i) | is.integer(i)) {
