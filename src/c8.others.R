@@ -20,7 +20,7 @@ f(AA)
 
 ## Rsolnp
 # http://www.rdocumentation.org/packages/Rsolnp
-library(Rsolnp);
+library(Rsolnp)
 fn1 <- function(x) exp(x[1]*x[2]*x[3]*x[4]*x[5])
 eqn1 <- function(x) {
 	z1 <- sum(x^2)
