@@ -2,13 +2,18 @@
 
 ## parallel
 library(parallel)
+sigma <- 0.1
 cl <- makeCluster(detectCores())
+clusterEvalQ(cl, {
+  beta <- 3
+})
 clusterCall(cl, function() {
   n <<- 100
 })
+clusterExport(cl,c("sigma"))
 coes <- as.numeric(parLapply(cl,1:10000,function(i) {
   x <- rnorm(n)
-  y <- 2*x+rnorm(n)*0.1
+  y <- beta*x+rnorm(n)*sigma
   m <- lm(y~x)
   coe <- coef(m)
   coe[[2]]
@@ -56,12 +61,20 @@ clusterCall(cl, function() {
   n <<- 100
 })
 registerDoParallel(cl)
-result <- llply(1:10000,function(i) {
+betas <- llply(1:10000,function(i) {
   x <- rnorm(n)
   y <- 2*x+rnorm(n)*0.1
   m <- lm(y~x)
   coe <- coef(m)
   coe[[2]]
 },.parallel=T)
+
+coefs <- ldply(1:10000,function(i) {
+  x <- rnorm(n)
+  y <- 2*x+rnorm(n)*0.1
+  m <- lm(y~x)
+  coef(m)
+},.parallel=T)
+
 stopCluster(cl)
 
