@@ -2,6 +2,59 @@
 
 ## pipeR
 # https://github.com/renkun-ken/pipeR
+library(pipeR)
+plot(diff(log(sample(rnorm(10000,mean=10,sd=1),size=100,replace=FALSE))),col="red",type="l")
+
+rnorm(10000,mean=10,sd=1) %>%
+  sample(size=100,replace=FALSE) %>%
+  log %>%
+  diff %>%
+  plot(col="red",type="l")
+
+rnorm(10000,mean=10,sd=1) %>>%
+  sample(.,size=length(.)/500,replace=FALSE) %>>%
+  log %>>%
+  diff %>>%
+  plot(.,col="red",type="l",main=sprintf("length: %d",length(.)))
+
+rnorm(100) %>% plot
+
+rnorm(100) %>% plot(col="red")
+
+rnorm(1000) %>% sample(size=100,replace=F) %>% hist
+
+rnorm(100) %>>% plot
+
+rnorm(100) %>>% plot(.)
+
+rnorm(100) %>>% plot(.,col="red")
+
+rnorm(1000) %>>% sample(.,length(.)/20,F)
+
+rnorm(1000) %>>% sample(.,length(.)/20,F) %>>% plot(.,main=sprintf("length: %d",length(.)))
+
+rnorm(100) %>>% {
+  par(mfrow=c(1,2))
+  hist(.,main="hist")
+  plot(.,col="red",main=sprintf("%d",length(.)))
+}
+
+
+library(dplyr)
+library(hflights)
+data(hflights)
+
+hflights %>%
+  mutate(Speed=Distance/ActualElapsedTime) %>%
+  group_by(UniqueCarrier) %>%
+  summarize(n=length(Speed),speed.mean=mean(Speed,na.rm = T),
+    speed.median=median(Speed,na.rm=T),
+    speed.sd=sd(Speed,na.rm=T)) %>%
+  mutate(speed.ssd=speed.mean/speed.sd) %>%
+  arrange(desc(speed.ssd)) %>>%
+  assign("hflights.speed",.,.GlobalEnv) %>>%
+  barplot(.$speed.ssd, names.arg = .$UniqueCarrier,
+    main=sprintf("Standardized mean of %d carriers", nrow(.)))
 
 ## rootSolve
 # http://www.rdocumentation.org/packages/rootSolve
