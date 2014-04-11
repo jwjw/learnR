@@ -10,4 +10,4 @@
 
 ## dplyr
 
-## others ...
+## others: pipeR, rootSolve, Rsolnp
