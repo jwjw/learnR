@@ -142,30 +142,6 @@ str_sub(x, 2, -2) <- ""; x
 str_trim("  String with trailing and leading white space\t")
 str_trim("\n\nString with trailing and leading white space\n\n")
 
-## String warping
-thanks_path <- file.path(R.home("doc"), "THANKS")
-thanks <- str_c(readLines(thanks_path), collapse = "\n")
-thanks <- word(thanks, 1, 3, fixed("\n\n"))
-cat(str_wrap(thanks), "\n")
-cat(str_wrap(thanks, width = 40), "\n")
-cat(str_wrap(thanks, width = 60, indent = 2), "\n")
-cat(str_wrap(thanks, width = 60, exdent = 2), "\n")
-
-## Extracting word
-sentences <- c("Jane saw a cat", "Jane sat down")
-word(sentences, 1)
-word(sentences, 2)
-word(sentences, -1)
-word(sentences, 2, -1)
-
-word(sentences[1], 1:3, -1)
-word(sentences[1], 1, 1:4)
-
-str <- 'abc.def..123.4568.999'
-word(str, 1, sep = fixed('..'))
-word(str, 2, sep = fixed('..'))
-
-
 
 ## Example 1: fruits
 fruits <- readLines("data/fruits.txt")
