@@ -182,6 +182,13 @@ add(list(1,2,3))
 times <- function(x) Reduce(`*`,x,init = 1)
 times(list(1,2,3))
 
+dfs <- lapply(1:5, function(k) {
+  df <- data.frame(i=1:10,x=rnorm(10,k,1))
+  colnames(df) <- c("i",letters[k])
+  df
+})
+df1 <- Reduce(function(...) merge(...,by = "i"),dfs)
+
 ### Filter
 Filter(function(x) x>=0, rnorm(10))
 
