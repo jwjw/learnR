@@ -145,8 +145,8 @@ apply(m,2,sum)
 apply(m,1,function(row) {
   c(row[1],row[2])
 })
-apply(m,2,function(row) {
-  c(row[1],row[2])
+apply(m,2,function(col) {
+  c(col[1],col[2])
 })
 
 
