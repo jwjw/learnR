@@ -43,7 +43,7 @@ df.group.do.list <- do(df.group, function(g) {
 })
 df.group.do <- do.call(rbind,df.group.do.list)
 
-## Chain operator %.%
+## Pipe (chain) operator %.%
 df.summary <-
   df %.%
   select(id:inventory) %.%
@@ -54,7 +54,6 @@ df.summary <-
     inventory.sum=sum(inventory)) %.%
   mutate(density.smean=density.mean/density.sd) %.%
   arrange(desc(density.smean))
-
 
 
 ## Applications with {hflights} data
