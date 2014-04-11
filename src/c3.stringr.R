@@ -23,6 +23,9 @@ str_dup(fruit, 2)
 str_dup(fruit, 1:3)
 str_c("ba", str_dup("na", 0:5))
 
+## Regular expression
+# http://regexone.com/lesson
+
 ## String detect
 fruit <- c("apple", "banana", "pear", "pinapple")
 str_detect(fruit, "a")
@@ -173,4 +176,3 @@ ps.df
 ps <- readLines("data/personal-statement.txt")
 pattern <- ".+name is\\s+(\\w+).* (\\d+) .*years.+working for (\\w+) company.*"
 str_replace_all(ps,pattern,"Name: \\1, Age: \\2, Company: \\3")
-
