@@ -85,3 +85,6 @@ x0 <- c(-2, 2, 2, -1, -1)
 powell <- solnp(x0, fun = fn1, eqfun = eqn1, eqB = c(10, 0, 5))
 powell
 fn1(powell$pars)
+
+
+## R Markdown (pandoc, {rmarkdown})

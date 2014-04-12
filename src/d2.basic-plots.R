@@ -14,3 +14,5 @@
 ## Partitioning plots
 
 ## Graphics devices
+
+## Interative graphics ({manipulate})
