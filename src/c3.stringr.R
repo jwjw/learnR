@@ -1,3 +1,6 @@
+# Regular expressions
+# http://regexone.com/lesson/0
+
 # {stringr} package
 library(stringr)
 

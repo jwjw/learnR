@@ -1,4 +1,5 @@
 # {reshape2} package
+## Online tutorial: http://www.seananderson.ca/2013/10/19/reshape.html
 
 require(reshape2)
 data(airquality)
