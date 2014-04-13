@@ -181,6 +181,10 @@ l3$d
 l3$d <- c("hello","world")
 l3
 
+l4 <- list(a=1,b=2,c=3)
+c4 <- unlist(l4)
+l4 <- list(a=1,b=2,c="hello")
+c4 <- unlist(l4)
 
 ## Data frame
 
