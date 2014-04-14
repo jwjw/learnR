@@ -24,7 +24,7 @@ aql <- melt(airquality, id.vars = c("month", "day"),
   value.name = "climate_value")
 head(aql)
 
-## Transformation between long- and -short format
+## Transformation between long- and -wide format
 
 aql <- melt(airquality, id.vars = c("month", "day"))
 aqw <- dcast(aql, month + day ~ variable)

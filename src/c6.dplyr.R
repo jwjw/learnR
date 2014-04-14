@@ -69,3 +69,4 @@ ex1 <-
     speed.median=median(Speed,na.rm=T),
     speed.sd=sd(Speed,na.rm=T)) %.%
   arrange(desc(speed.mean/speed.sd))
+
