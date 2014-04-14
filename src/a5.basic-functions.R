@@ -81,6 +81,8 @@ all(x <= 1)
 which(x >= 1.5)
 x[x>=1.5]
 
+x <- 1 %in% c(1,2,3)
+
 ## Character functions: cat(), message(), print(), sprintf(), paste(), paste0()
 cat("Hello, world!")
 message("Hello, world!")
@@ -174,6 +176,8 @@ EURUSD5$DateTime <- strptime(paste(EURUSD5$Date,EURUSD5$Time),
 EURUSD5 <- EURUSD5[c("DateTime","Open","High","Low","Close","Volume")]
 
 EURUSD5a <- transform(EURUSD5, Medium=(High+Low)/2)
+
+EURUSD5b <- within(EURUSD5, Median <- (High+Low)/2)
 
 ### Data write
 write.csv(EURUSD5a,"output/EURUSD5a.local.csv",row.names=FALSE)
