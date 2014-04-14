@@ -28,6 +28,13 @@ grades <- sqlQuery(conn,"SELECT * FROM [Grades$]")
 df <- sqlQuery(conn,"SELECT * FROM [Students$] INNER JOIN [Grades$] ON [Grades$].Name = [Students$].Name")
 odbcClose(conn)
 
+conn <- odbcConnectExcel2007("local/data.xlsb",readOnly = F)
+df <- data.frame(date=as.character(seq(from=as.Date("2010-01-01"),to=as.Date("2010-10-01"),by="day")))
+df$x <- rnorm(nrow(df))
+head(df)
+sqlSave(conn,df,"df",rownames = FALSE,safer = T)
+odbcClose(conn)
+
 
 ## SQLite
 # http://www.sqlite.org/
