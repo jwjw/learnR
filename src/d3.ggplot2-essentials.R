@@ -1,6 +1,15 @@
 # {ggplot2} package
 
-## Introduction to ggplot2
+## Essentials
+library(ggplot2)
+df <- data.frame(x=rnorm(100))
+df <- transform(df,y=2*x+rnorm(100))
+qplot(1:100,df$x,data=df,geom="line")
+qplot(df$x,data=df,binwidth=0.5)
+
+data(diamonds)
+qplot(x*y*z,data=diamonds)
+qplot(carat,fill=cut,data=diamonds)
 
 ## ggplot2
 library(ggplot2)
