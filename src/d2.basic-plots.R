@@ -50,6 +50,15 @@ for(i in 1:4) {
 par(mfrow=c(2,2))
 plot(m,ask=F)
 
+df2 <- data.frame(x=rnorm(100))
+df2$y <- 2*df$x+rnorm(100)*0.1
+df2$z <- 3*df$x+rnorm(100)*0.2
+df2$w <- 4*df$x+rnorm(100)*0.3
+
+par(mfrow=c(1,3),oma = c(0,0,2,0))
+plot(w~x+y+z,data=df2,ask=F)
+title("Plots for w~x+y+z",outer = T,cex.main=1.5)
+
 ## Graphics devices
 ### Bitmap (bmp)
 bmp("local/output.bmp",width = 800,height=600,units = "px",
