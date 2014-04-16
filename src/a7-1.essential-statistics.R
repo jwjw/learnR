@@ -108,6 +108,12 @@ cor(diff(log(m4.pred)),diff(log(m4.real)))
 
 ## Time series model fit
 
+### Autocorrelation functions
+x1 <- arima.sim(model=list(ar=c(0.8,-0.5),ma=c(0.5,0.2)),n = 200)
+acf(x1)
+pacf(x1)
+spectrum(x1)
+
 ### ARIMA
 x1 <- arima.sim(model=list(ar=c(0.8,-0.5),ma=c(0.5,0.2)),n = 200)
 x1.arma <- arima(x1,order = c(2,0,2),include.mean = F)

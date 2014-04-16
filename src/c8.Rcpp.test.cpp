@@ -9,6 +9,10 @@ using namespace Rcpp;
 
 // For more on using Rcpp click the Help button on the editor toolbar
 
+int abc() {
+  return 10;
+}
+
 // [[Rcpp::export]]
 int timesTwo(int x) {
    return x * 2;

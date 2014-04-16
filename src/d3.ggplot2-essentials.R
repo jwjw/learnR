@@ -1,4 +1,7 @@
 # {ggplot2} package
+# http://ggplot2.org/
+# http://blog.echen.me/2012/01/17/quick-introduction-to-ggplot2/
+# http://www.statmethods.net/advgraphs/ggplot2.html
 
 ## Essentials
 library(ggplot2)
@@ -51,18 +54,6 @@ qplot(cut, nrow, data = t.table, geom = "bar", stat = "identity", fill = clarity
 qplot(cut, data = diamonds, geom = "bar", weight = carat)
 qplot(cut, data = diamonds, geom = "bar", weight = carat, ylab = "carat")
 
-ddply(diamonds, "cut", "nrow")
-ddply(diamonds, c("cut", "clarity"), "nrow")
-ddply(diamonds, "cut", summarise, meanDepth = mean(depth))
-ddply(diamonds, "cut", summarise, lower = quantile(depth, 0.25, na.rm = T), median = median(depth,
-    na.rm = T), upper = quantile(depth, 0.75, na.rm = T))
-t.function <- function(x, y) {
-    z <- sum(x)/sum(x + y)
-    return(z)
-}
-ddply(diamonds, "cut", summarize, custom = t.function(depth, price))
-ddply(diamonds, "cut", summarize, custom = sum(depth)/sum(depth + price))
-
 qplot(carat, data = diamonds, geom = "histogram", binwidth = 0.1)
 qplot(carat, data = diamonds, geom = "histogram", binwidth = 0.01)
 qplot(wt, mpg, data = mtcars, geom = c("point", "smooth"))
@@ -72,9 +63,9 @@ qplot(wt, mpg, data = mtcars, geom = c("smooth", "point"), se = F)
 qplot(wt, mpg, data = mtcars, geom = c("smooth", "point"), span = 0.6)
 qplot(wt, mpg, data = mtcars, geom = c("smooth", "point"), span = 1)
 qplot(wt, mpg, data = mtcars, geom = c("smooth", "point"), method = "lm")
+
 library(splines)
-qplot(wt, mpg, data = mtcars, geom = c("point", "smooth"), method = "lm", formula = y ~
-    ns(x, 5))
+qplot(wt, mpg, data = mtcars, geom = c("point", "smooth"), method = "lm", formula = y ~ ns(x, 5))
 qplot(wt, mpg, data = mtcars, facets = cyl ~ ., geom = c("point", "smooth"))
 p.tmp <- qplot(factor(cyl), wt, data = mtcars, geom = "boxplot")
 p.tmp
@@ -121,19 +112,29 @@ p.tmp
 p.tmp + scale_fill_brewer(palette = "Paired")
 RColorBrewer::display.brewer.all()
 p.tmp + scale_fill_manual(values = c("#7fc6bc", "#083642", "#b1df01", "#cdef9c", "#466b5d"))
-qplot(mpg, wt, data = mtcars, color = factor(cyl), geom = "point", xlab = "Descr. of x-axis",
-    ylab = "Descr. of y-axis", main = "our sample plot")
-qplot(mpg, wt, data = mtcars, color = factor(cyl), geom = "point") + xlab("x-axis")
-qplot(mpg, wt, data = mtcars, color = factor(cyl), geom = "point") + labs(color = "Legend-Name")
-qplot(mpg, wt, data = mtcars, color = factor(cyl), geom = "point") + theme(legend.position = "left")
-qplot(mpg, wt, data = mtcars, color = factor(cyl), geom = "point") + scale_color_discrete(name = "Legend of cyl",
+qplot(mpg, wt, data = mtcars,
+  color = factor(cyl), geom = "point",
+  xlab = "Descr. of x-axis", ylab = "Descr. of y-axis",
+  main = "our sample plot")
+qplot(mpg, wt, data = mtcars,
+  color = factor(cyl),geom = "point") + xlab("x-axis")
+qplot(mpg, wt, data = mtcars,
+  color = factor(cyl), geom = "point") + labs(color = "Legend-Name")
+qplot(mpg, wt, data = mtcars,
+  color = factor(cyl), geom = "point") + theme(legend.position = "left")
+qplot(mpg, wt, data = mtcars,
+  color = factor(cyl), geom = "point") +
+  scale_color_discrete(name = "Legend of cyl",
     breaks = c(4, 6, 8), labels = c("four", "six", "eight"))
-qplot(mpg, wt, data = mtcars, color = factor(cyl), geom = "point") + scale_color_discrete(name = "Legend of cyl",
-    breaks = c(8, 4, 6))
-qplot(mpg, wt, data = mtcars, color = factor(cyl), geom = "point") + scale_color_discrete(name = "Legend of cyl",
-    breaks = c(4, 8))
+qplot(mpg, wt, data = mtcars,
+  color = factor(cyl), geom = "point") +
+  scale_color_discrete(name = "Legend of cyl", breaks = c(8, 4, 6))
+qplot(mpg, wt, data = mtcars,
+  color = factor(cyl), geom = "point") +
+  scale_color_discrete(name = "Legend of cyl", breaks = c(4, 8))
 
-p.tmp <- qplot(wt, mpg, data = mtcars, geom = c("point", "smooth"), method = "lm")
+p.tmp <- qplot(wt, mpg, data = mtcars,
+  geom = c("point", "smooth"), method = "lm")
 p.tmp
 p.tmp + scale_x_continuous(limits = c(15, 30))
 p.tmp + coord_cartesian(xlim = c(15, 30))
@@ -141,24 +142,37 @@ p.tmp
 p.tmp + scale_x_continuous(breaks = c(15, 18, 27))
 p.tmp + scale_x_continuous(breaks = c(15, 18, 27), labels = c("low", "medium", "high"))
 
-qplot(mpg, wt, data = mtcars, color = factor(cyl), geom = "point")
-qplot(mpg, wt, data = mtcars, color = factor(cyl), geom = "point") + scale_y_continuous(trans = "log2") +
-    scale_x_log10()
+qplot(mpg, wt, data = mtcars,
+  color = factor(cyl), geom = "point")
+qplot(mpg, wt, data = mtcars,
+  color = factor(cyl), geom = "point") +
+  scale_y_continuous(trans = "log2") +
+  scale_x_log10()
 qplot(mpg, wt, data = mtcars, geom = "point") + theme_bw()
 qplot(mpg, wt, data = mtcars, geom = "point") + theme_bw(18)
 
 theme_set(theme_bw(18))
 theme_get()
-qplot(mpg, wt, data = mtcars, geom = "point", main = "Test Plot")
-qplot(mpg, wt, data = mtcars, geom = "point", main = "Title of Plot") + theme(axis.line = element_line(),
-    plot.title = element_text(size = 20, face = "bold", color = "steelblue"), panel.grid.minor = element_blank(),
-    panel.background = element_blank(), panel.grid.major = element_line(linetype = "dotted",
-        color = "lightgrey", size = 0.5), panel.grid.major = element_blank())
-qplot(x = factor(gear), ymax = ..count.., ymin = 0, ymax = ..count.., label = ..count..,
-    data = mtcars, geom = c("pointrange", "text"), stat = "bin", vjust = -0.5, color = I("blue")) +
+qplot(mpg, wt, data = mtcars,
+  geom = "point", main = "Test Plot")
+qplot(mpg, wt, data = mtcars,
+  geom = "point", main = "Title of Plot") +
+  theme(axis.line = element_line(),
+    plot.title = element_text(size = 20, face = "bold", color = "steelblue"),
+    panel.grid.minor = element_blank(),
+    panel.background = element_blank(),
+    panel.grid.major = element_line(linetype = "dotted",
+      color = "lightgrey", size = 0.5),
+    panel.grid.major = element_blank())
+
+qplot(x = factor(gear),
+  ymax = ..count.., ymin = 0, ymax = ..count.., label = ..count..,
+  data = mtcars, geom = c("pointrange", "text"),
+  stat = "bin", vjust = -0.5, color = I("blue")) +
     coord_flip()
 
-p.tmp <- ggplot(mtcars, aes(x = factor(1), fill = factor(cyl))) + geom_bar(width = 1)
+p.tmp <- ggplot(mtcars, aes(x = factor(1), fill = factor(cyl))) +
+  geom_bar(width = 1)
 p.tmp
 p.tmp + coord_polar(theta = "y")
 p.tmp + coord_polar()

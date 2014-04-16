@@ -1,6 +1,7 @@
 # Basic plots
 
 ## Plot (scatter, line, etc.)
+# http://www.statmethods.net/advgraphs/parameters.html
 df <- data.frame(x=rnorm(100))
 df <- transform(df,y=2*x+rnorm(100))
 
@@ -9,9 +10,12 @@ plot(df$x,df$y)
 plot(y~x,data=df)
 plot.types <- c("p","l","b","c","o","h","s","S","n")
 invisible(lapply(plot.types,function(type) {
-  plot(df$y,type=type,main="Plot for y in df",sub=sprintf("Type: %s",type),
+  plot(df$y,type=type,main=sprintf("Plot for y in df (type: %s)",type),
     xlab="index",ylab="df$y",col="blue")
 }))
+
+plot(sin,xlim=c(-3,3))
+plot(dnorm,xlim=c(-3,3))
 
 ## Bar charts
 library(hflights)
@@ -56,7 +60,7 @@ df2$z <- 3*df$x+rnorm(100)*0.2
 df2$w <- 4*df$x+rnorm(100)*0.3
 
 par(mfrow=c(1,3),oma = c(0,0,2,0))
-plot(w~x+y+z,data=df2,ask=F)
+plot(w~.,data=df2,ask=F)
 title("Plots for w~x+y+z",outer = T,cex.main=1.5)
 
 ## Graphics devices

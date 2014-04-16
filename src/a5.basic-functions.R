@@ -153,6 +153,7 @@ qnorm(c(0.01,0.99))
 table(sample(letters[1:3],100,T))
 table(sample(letters[1:3],100,T),sample(LETTERS[1:4],100,T))
 
+
 ## Data manipulation
 
 ### Data read
