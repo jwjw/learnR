@@ -1,0 +1,125 @@
+---
+title: 'Biases in computed returns: An application to the Size Effect'
+author: "Marshall E. Blume and Robert F. Stambaugh"
+date: "Published in August 1983"
+output:
+  beamer_presentation: default
+---
+
+## Background
+
+Empirical work in finance reports that average risk-adjusted returns on stocks of small firms exceed those of large firms, where size is measured by the market value of outstanding common equity. This phenomenon is called the *size effect*.
+
+## Stylized facts on size effect
+
+- Reinganum (1982) uses daily returns for stocks on both New York and American Stock Exchanges and finds that, during 1964-1978 period, the average return for firms in the lowest market-value decile exceeds the average return for firms in the highest decile by more than 0.1% per day, i.e. over 30% per year.
+- Various methods of risk adjustment contribute little to explaining such notable differences.
+- Keim (1983) reports that almost half of the annual difference between returns on small and large firms occurs in January.
+
+## Findings
+
+- The size effect estimated by studies using daily returns data is significantly overstated due to a statistical bias resulted from *bid-ask effect*.
+- The same bias could potentially occur in any study using closing prices to compute returns, particularly daily returns.
+- If a *buy-and-hold* portfolio robust to bid-ask effect is used, the average size effect is half as large as reported by Reinganum and Keim, and all the effect is attributable to January.
+
+## The bid-ask effect: basic concepts
+
+Suppose the *true price* at time $t$ of stock $i$ as $P_{i,t}$, which can be viewed as the price at which simultaneous public market buy and sell orders would "cross" on the floor.
+
+The *closing price*, denoted by $\hat{P}_{i,t}$ reported for stock $i$ at the ending of period $t$, is the price at which the last transaction occurred prior to the close of trading.
+
+The closing price is often used to approximately represent the true price of a stock in literature.
+
+## The bid-ask effect: A simple model
+
+However, the assumed simultaneity of crossing market orders at closing may not be always the case. The closing price $\hat{P}_{i,t}$ can deviate from the true price $P_{i,t}$ significantly if the last transaction only reflects a public market order on only one side.
+
+- *Bid* price: matching a market sell with a limit buy probably leads to a price less than the true price
+- *Ask* price: matching a market buy with a limit sell probably leads to a price greater than the true price
+
+In both cases, the closing price may not accurately represent the true price of the asset.
+
+## The bid-ask effect: formulation
+
+The bid-ask effect is modeled as $$\hat{P}_{i,t}=\left[1+\delta_{i,t}\right]P_{i,t}$$ or $$\hat{P}_{i,t}=P_{i,t}+\epsilon_{i,t}$$ where $\mathbb{E}\left(\delta_{i,t}\right)=0$, $\delta_{i,t}$ is independently distributed across $t$, and $\delta_{i,t}$ is independent of $P_{i,\tau}$ for all $\tau$.
+
+## The bid-ask effect: formulation
+
+Suppose the true return for security $i$ for period $t$ is denoted by $$r_{i,t}=\frac{P_{i,t}}{P_{i,t-1}}-1.$$
+
+The computed return is $$\hat{r}_{i,t}=\frac{\hat{P}_{i,t}}{\hat{P}_{i,t-1}}-1=\frac{\left[1+\delta_{i,t}\right]P_{i,t}}{\left[1+\delta_{i,t-1}\right]P_{i,t-1}}-1.$$
+
+Combining these two definitions yields $$\hat{r}_{i,t}=\frac{1+\delta_{i,t}}{1+\delta_{i,t-1}}\left[1+r_{i,t}\right]-1.$$
+
+## The bias in computed returns
+
+Taking expectations of both sides gives $$\mathbb{E}\left[\hat{r}_{i,t}\right]=\mathbb{E}\left[\frac{1+\delta_{i,t}}{1+\delta_{i,t-1}}\right]\left\{ 1+\mathbb{E}\left[r_{i,t}\right]\right\}-1.$$
+
+Note that Jensen's inequality states in general that if $X$ is a random variable and $\varphi$ is a convex function, then $\varphi\left(\mathbb{E}\left[X\right]\right) \leq \mathbb{E}\left[\varphi(X)\right]$.
+
+This theorem applies to this case so that $$\mathbb{E}\left[\frac{1+\delta_{i,t}}{1+\delta_{i,t-1}}\right]>1$$ which implies $\mathbb{E}\left[\hat{r}_{i,t}\right]>\mathbb{E}\left[r_{i,t}\right]$.
+
+## The bias in computed returns
+
+Using a Taylor series, the bias can be approximated as $$\mathbb{E}\left[\hat{r}_{i,t}\right]\approx\mathbb{E}\left[r_{i,t}\right]+\sigma^{2}\left(\delta_{i,t-1}\right)$$ where $\sigma^{2}\left(\cdot\right)$ denotes the variance. If the third- and higher-order odd moments of $\delta_{i,t-1}$ are zero, then the variance term provides a lower bound for the bias induced by the bid-ask effect.
+
+## The potential magnitude of the bid-ask bias
+
+To roughly assess the potential magnitude of the bid-ask bias, denote the true price as $P$ and assume that the closing period is equally likely to be a bid price $P_B$ or an ask price $P_A$. To ensure that the expected closing price equals the true price, it must be held that $P=\frac{P_B+P_A}{2}$ and $\delta_i=\pm\frac{P_{A}-P_{B}}{2}$. In this simple case, the bid-ask bias becomes $$\sigma^{2}\left(\delta_{i}\right)=\left(\frac{P_{A}-P_{B}}{P_{A}+P_{B}}\right)^{2}.$$
+
+Although Fisher (1966) suggests that if the last transaction occurs before the end of the period, known as *non-synchronous trading*, also imparts an upward bias to computed single-period returns, its magnitude of bias appears to be negligible compared to the bid-ask bias.
+
+## Estimating size effect: Rebalanced portfolio approach
+
+Like many other empirical studies, Reinganum and Keim use arithmetic averages of daily returns computed by closing prices to estimate the size effect. However, the bid-ask bias may make such practice invalid.
+
+As it is shown, single period returns on individual stocks computed with recorded closing prices are upward biased against the *true* stock prices. This bias arises from a bid-ask effect in closing prices and can be non-trivial for daily returns on stocks of small firms.
+
+Since the arithmetic average of computed returns contains the average upward bias for the individual stocks rather than cancels the bias on average, their estimates of the size effect are also upward biased.
+
+## Estimating size effect: Rebalanced portfolio approach
+
+Since arithmetic averaging implies rebalancing to equal weights each period, this calculation actually gives the return on a *rebalanced* portfolio.
+
+To put it formally, if the true rebalanced return is $r_{RB,t}=\frac{1}{N}\sum r_{i,t}$ and the computed return is $\hat{r}_{RB,t}=\frac{1}{N}\sum\hat{r}_{i,t}$, then $$\mathbb{E}\left[\hat{r}_{RB,t}\right]\approx\mathbb{E}\left[r_{RB,t}\right]+\overline{\sigma^{2}\left(\epsilon_{i,t-1}/P_{i,t-1}\right)}$$ where a bar indicates an average over $i$. Note that the bid-ask bias will persist using the rebalanced portfolio approach.
+
+## Estimating size effect: buy-and-hold portfolio approach
+Consider the *buy-and-hold* strategy that invests an equal amount in each of $N$ securities at an initial time 0, but no further transactions are performed. Assume all $N$ stocks have the same initial price at time 0 and that no dividends are paid in the whole investment period from time 0 through time $t$.
+
+The true return for the buy-and-hold portfolio is given by $$r_{BH,t}=\frac{\sum P_{i,t}}{\sum P_{i,t-1}}-1.$$ The computed buy-and-hold return with additive disturbance $\epsilon_{i,t}$ is $$\hat{r}_{BH,t}=\frac{\sum\hat{P}_{i,t}}{\sum\hat{P}_{i,t-1}}-1=\frac{\sum\hat{P}_{i,t}+\sum\epsilon_{i,t}}{\sum\hat{P}_{i,t-1}+\sum\epsilon_{i,t-1}}-1.$$
+
+## Estimating size effect: buy-and-hold portfolio approach
+
+Rewriting it yields $$\hat{r}_{BH,t}=\frac{1+r_{BH,t}+\bar{\epsilon}_{t}/\bar{P}_{t-1}}{1+\bar{\epsilon}_{t-1}/\bar{P}_{t-1}}-1.$$ which can be approximated by Taylor series as $$\mathbb{E}\left[\hat{r}_{BH,t}\right]\approx\mathbb{E}\left[r_{BH,t}\right]+\sigma^{2}\left(\bar{\epsilon}_{t-1}/\bar{P}_{t-1}\right).$$
+
+## Difference between rebalanced return and buy-and-hold return
+
+The difference between rebalanced return and buy-and-hold return is listed as below:
+
+- Rebalanced return: $\mathbb{E}\left[\hat{r}_{RB,t}\right]\approx\mathbb{E}\left[r_{RB,t}\right]+\overline{\sigma^{2}\left(\epsilon_{i,t-1}/P_{i,t-1}\right)}$
+- Buy-and-hold return: $\mathbb{E}\left[\hat{r}_{BH,t}\right]\approx\mathbb{E}\left[r_{BH,t}\right]+\sigma^{2}\left(\bar{\epsilon}_{t-1}/\bar{P}_{t-1}\right)$
+
+The bid-ask bias for the buy-and-hold return is reduced by a *diversification effect*.
+
+## A general case for the return of any proforlio
+
+In general case, any portfolio can be written as $\hat{r}=\sum\omega_{i}\hat{r}_{i}$ where $\omega_i$ is the proportion placed in asset $i$. The expected computed return is then $$\mathbb{E}\left[\hat{r}\right]=\sum\mathbb{E}\left[\omega_{i}\right]\mathbb{E}\left[\hat{r}_{i}\right]+\sum\mbox{cov}\left(\omega_{i},\hat{r}_{i}\right).$$
+
+$\sum\mathbb{E}\left[\omega_{i}\right]\mathbb{E}\left[\hat{r}_{i}\right]$ is a weighted average of computed individual returns and therefore always contains the weighted average of the individual biases.
+
+For the buy-and-hold portfolio, $\sum\mbox{cov}\left(\omega_{i},\hat{r}_{i}\right)$ offsets this bias due to the negative covariance between $\omega_i$ and $\hat{r}_i$ while for rebalanced portfolio or for any portfolio whose weights are uncorrelated with computed returns, the covariance term is zero, yielding no reduction in the bias.
+
+## Empirical results: A re-examination of the size effect
+
+- Using exactly the same data in previous study by Reinganum (1982) and Keim (1983), the approach of buy-and-hold portfolio suggests that the size effect is only 0.051% per day, less than *half* of the result, 0.105% per day, estimated by rebalanced portfolio.
+- The summary statistics also confirms that the size effect is also non-stationary across subperiods, previously noted by Blume and Friend (1974) and by Brown, Kleidon and Marsh (1983). The pattern is reversed in the second subperiod as opposed to the first and the third, but traditional approach does not observe the reverse.
+- The size effect can be fully attributed to Januaray whereas other months contribute little to it.
+- Risk-adjusted returns do not significantly alter the findings.
+
+## Conclusion
+
+Although it is observed that notable size effect appears in January, its full-year magnitude is only half of that previously reported in earlier studies.
+
+In addition, on average over the eighteen years in observation, there seems to be little evidence of any consistent size effect in the last eleven months of the year.
+
+Also, it should be noted that future studies need to be more careful to form equally-weighted rebalanced portfolios (or, more generally, any portfolio with weights uncorrelated with computed returns). Therefore, buy-and-hold approach is proposed.
