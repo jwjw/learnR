@@ -1,6 +1,7 @@
 .Rproj.user
 .Rhistory
 .RData
+*.pdf
 output
 local
 *.local.*
