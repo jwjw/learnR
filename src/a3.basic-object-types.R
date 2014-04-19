@@ -11,6 +11,8 @@ c(1,2,c(2,3))
 seq(1,10,2)
 seq(3,length.out = 10)
 is.numeric(c(1,2,3,4.5))
+1+1:5
+1:5+1
 
 ### Integer vector
 2L
