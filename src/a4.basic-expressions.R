@@ -6,6 +6,7 @@ x1 <- 1
 x3 <<- 3
 4 ->> x4
 x5 = 5
+x6 <- x7 = 8
 
 ### Local evaluation
 local({
