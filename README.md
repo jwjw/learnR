@@ -4,7 +4,7 @@
 
 learnR is a tutorial for R programming language from basic to advanced levels. It includes basic concepts, motivations, principles and their application in data transformation, data analysis, data mining, statistical computing, financial computing, etc.
 
-## Prerequesites
+## Prerequisites
 
 1. [R](http://cran.rstudio.com/bin/windows/base/)
 2. [Rtools](http://cran.rstudio.com/bin/windows/Rtools/)
