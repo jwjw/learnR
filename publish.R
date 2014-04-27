@@ -1,0 +1,4 @@
+library(Rgitbook)
+buildRmd()
+buildGitbook()
+
