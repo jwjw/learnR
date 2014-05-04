@@ -1,0 +1,6 @@
+
+
+
+# Composing plots
+
+example

@@ -1,0 +1,6 @@
+
+
+
+# Bar chart
+
+example
