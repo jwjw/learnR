@@ -1,0 +1,6 @@
+
+
+
+# Anonymous functions
+
+example
