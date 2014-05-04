@@ -1,0 +1,6 @@
+
+
+
+# Lazy evaluation
+
+example
