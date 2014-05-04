@@ -1,0 +1,6 @@
+
+
+
+# Logical function
+
+Logical function
