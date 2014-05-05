@@ -5,25 +5,25 @@
 
 R stands out from many competitors with the following reasons:
 
-## Totally free
+#### Totally free
 
 
-## Large user group
+#### Large user group
 
 
-## Highly flexible
+#### Highly flexible
 
 
-## Fully reproducible
+#### Fully reproducible
 
 
-## Rich resources
+#### Rich resources
 
 
-## Strong community
+#### Strong community
 
 
-## Cutting-edge techniques
+#### Cutting-edge techniques
 
 
-## Active job market
+#### Active job market
