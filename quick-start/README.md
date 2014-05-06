@@ -1,6 +1,6 @@
 # Quick start
 
-In this section, you will get the basic knowledge that answers of the following questions:
+In this section, you will get the basic knowledge of R that answers the following questions:
 
 1. What is R? 
 2. Why use R? 

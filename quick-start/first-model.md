@@ -35,6 +35,6 @@ lm(formula = y ~ x)
 
 Coefficients:
 (Intercept)            x  
-     -0.005        2.022  
+    0.00153      1.99247  
 ```
 
