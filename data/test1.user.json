@@ -1,0 +1,12 @@
+{
+    "sample": 200,
+    "functions": {
+        "runif": {
+            "max": 12
+        },
+        "rbinom": {
+            "size": 12
+        }
+    },
+    "aggregate": ["mean","sd","median"]
+}
